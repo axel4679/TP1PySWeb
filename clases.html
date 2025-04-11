@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gimnasio FitnessPro - Clases</title>
+    <!-- 1. Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- 2. Page-Specific Stylesheet -->
+    <link rel="stylesheet" href="css/clases.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- ==================== HEADER (Identical to index.html) ==================== -->
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="Gimnasio FitnessPro Logo" />
+        </a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li class="has-megamenu">
+              <a href="#" class="active">
+                <!-- Ensure 'active' is correct -->
+                Servicios <i class="fas fa-chevron-down fa-xs"></i
+              ></a>
+              <div class="mega-menu">
+                <div class="mega-menu-column">
+                  <h4><a href="clases.html" class="active">Clases</a></h4>
+                  <ul>
+                    <li><a href="clases.html#yoga">Yoga</a></li>
+                    <li><a href="clases.html#crossfit">CrossFit</a></li>
+                    <li><a href="clases.html#spinning">Spinning</a></li>
+                    <li><a href="clases.html#musculacion">Musculación</a></li>
+                    <li><a href="clases.html#funcional">Funcional</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-column">
+                  <h4><a href="entrenadores.html">Entrenadores</a></h4>
+                  <ul>
+                    <li><a href="entrenadores.html#juan">Juan Pérez</a></li>
+                    <li><a href="entrenadores.html#maria">María López</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-column">
+                  <h4><a href="precios.html">Precios</a></h4>
+                  <ul>
+                    <li><a href="precios.html#mensual">Plan Mensual</a></li>
+                    <li><a href="precios.html#anual">Plan Anual</a></li>
+                    <li>
+                      <a href="precios.html#clase-suelta">Clase Suelta</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <button
+          id="theme-toggle-button"
+          class="theme-toggle"
+          aria-label="Cambiar tema claro/oscuro"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT - CLASES ==================== -->
+    <main>
+      <section id="clases-page" class="section-padding">
+        <div class="container">
+          <h1 class="section-title">Nuestras Clases</h1>
+
+          <!-- Filtros CSS -->
+          <aside class="filtros-clases">
+            <h2>Filtrar por Categoría</h2>
+            <input
+              type="radio"
+              name="filtro-clase"
+              id="filtro-todos"
+              checked
+            /><label for="filtro-todos">Todas</label>
+            <input type="radio" name="filtro-clase" id="filtro-yoga" /><label
+              for="filtro-yoga"
+              >Yoga</label
+            >
+            <input
+              type="radio"
+              name="filtro-clase"
+              id="filtro-crossfit"
+            /><label for="filtro-crossfit">CrossFit</label>
+            <input
+              type="radio"
+              name="filtro-clase"
+              id="filtro-spinning"
+            /><label for="filtro-spinning">Spinning</label>
+            <input
+              type="radio"
+              name="filtro-clase"
+              id="filtro-musculacion"
+            /><label for="filtro-musculacion">Musculación</label>
+            <input
+              type="radio"
+              name="filtro-clase"
+              id="filtro-funcional"
+            /><label for="filtro-funcional">Funcional</label>
+          </aside>
+
+          <!-- Galería de Clases (Masonry Grid) -->
+          <!-- The filter inputs MUST be siblings before the gallery for ~ to work -->
+          <section class="galeria-clases cards-container">
+            <!-- Tarjetas de clases -->
+            <article class="card card-hover-effect yoga">
+              <div class="card-image">
+                <img src="images/clase-yoga-detalle.jpg" alt="Clase de Yoga" />
+                <div class="card-overlay"><span>Ver Detalles</span></div>
+              </div>
+              <div class="card-content">
+                <h3>Yoga Restaurativo</h3>
+                <p>Encuentra calma y flexibilidad.</p>
+              </div>
+            </article>
+            <article class="card card-hover-effect crossfit">
+              <div class="card-image">
+                <img
+                  src="images/clase-crossfit-detalle.jpg"
+                  alt="Clase de CrossFit"
+                />
+                <div class="card-overlay"><span>Ver Detalles</span></div>
+              </div>
+              <div class="card-content">
+                <h3>WOD Intenso</h3>
+                <p>Entrenamiento del día de alta intensidad.</p>
+              </div>
+            </article>
+            <article class="card card-hover-effect spinning">
+              <div class="card-image">
+                <img
+                  src="images/clase-spinning-detalle.jpg"
+                  alt="Clase de Spinning"
+                />
+                <div class="card-overlay"><span>Ver Detalles</span></div>
+              </div>
+              <div class="card-content">
+                <h3>Spinning Endurance</h3>
+                <p>Mejora tu resistencia cardiovascular.</p>
+              </div>
+            </article>
+            <article class="card card-hover-effect musculacion">
+              <div class="card-image">
+                <img
+                  src="images/clase-musculacion-detalle.jpg"
+                  alt="Clase de Musculación"
+                />
+                <div class="card-overlay"><span>Ver Detalles</span></div>
+              </div>
+              <div class="card-content">
+                <h3>Fuerza Total</h3>
+                <p>Desarrolla tu potencia muscular.</p>
+              </div>
+            </article>
+            <article class="card card-hover-effect funcional">
+              <div class="card-image">
+                <img
+                  src="images/clase-funcional-detalle.jpg"
+                  alt="Clase Funcional"
+                />
+                <div class="card-overlay"><span>Ver Detalles</span></div>
+              </div>
+              <div class="card-content">
+                <h3>Circuito Funcional</h3>
+                <p>Entrenamiento completo y dinámico.</p>
+              </div>
+            </article>
+            <!-- Añadir más tarjetas con sus clases de categoría -->
+          </section>
+
+          <!-- Tabla de Horarios Responsiva -->
+          <section class="horarios-semanales">
+            <h2>Horarios Semanales</h2>
+            <div class="tabla-responsive-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Hora</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Sábado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Hora">08:00</td>
+                    <td data-label="Lunes">Yoga</td>
+                    <td data-label="Martes">Spinning</td>
+                    <td data-label="Miércoles">Yoga</td>
+                    <td data-label="Jueves">Spinning</td>
+                    <td data-label="Viernes">Funcional</td>
+                    <td data-label="Sábado">CrossFit</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Hora">09:00</td>
+                    <td data-label="Lunes">CrossFit</td>
+                    <td data-label="Martes">Musculación</td>
+                    <td data-label="Miércoles">CrossFit</td>
+                    <td data-label="Jueves">Musculación</td>
+                    <td data-label="Viernes">Yoga</td>
+                    <td data-label="Sábado">Spinning</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Hora">18:00</td>
+                    <td data-label="Lunes">Spinning</td>
+                    <td data-label="Martes">Yoga</td>
+                    <td data-label="Miércoles">Spinning</td>
+                    <td data-label="Jueves">CrossFit</td>
+                    <td data-label="Viernes">Musculación</td>
+                    <td data-label="Sábado">-</td>
+                  </tr>
+                  <!-- Añadir más filas -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER (Identical to index.html) ==================== -->
+    <footer class="bg-dark text-light section-padding">
+      <!-- Footer content remains identical -->
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h4>Mantente Informado</h4>
+          <p>
+            Suscríbete a nuestro newsletter para recibir ofertas y novedades.
+          </p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input
+              type="email"
+              name="email"
+              placeholder="tu.email@ejemplo.com"
+              required
+              aria-label="Correo electrónico para newsletter"
+            />
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+          </form>
+        </div>
+        <div class="footer-col">
+          <h4>Enlaces Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="clases.html">Nuestras Clases</a></li>
+            <li><a href="entrenadores.html">Equipo de Entrenadores</a></li>
+            <li><a href="precios.html">Planes y Precios</a></li>
+            <li><a href="blog.html">Blog de Fitness</a></li>
+            <li><a href="contacto.html">Contacto y Ubicación</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <ul class="social-links">
+            <li>
+              <a href="#" target="_blank" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col footer-map">
+          <h4>Encuéntranos</h4>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.13117188898!2d-65.309588824683!3d-24.7914999780889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc2b8b4b8a555%3A0x45b69e4499913d4c!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1715105888888!5m2!1ses-419!2sar"
+              width="100%"
+              height="200"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de ubicación del Gimnasio FitnessPro"
+            >
+            </iframe>
+          </div>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, San
+            Salvador de Jujuy
+          </p>
+          <p><i class="fas fa-phone"></i> (388) 456-7890</p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p>&copy; 2025 Gimnasio FitnessPro. Todos los derechos reservados.</p>
+        <p>Desarrollado como práctica para APU - FI UNJu.</p>
+      </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT EMBEBIDO (CORREGIDO) ==================== -->
+    <script>
+      // ==========================================================
+      // FUNCIONALIDAD NUEVO CARRUSEL TESTIMONIOS (BOTONES) - Solo funcionará en index.html
+      // ==========================================================
+      const testimonioSlide = document.querySelector(
+        "#testimonios .carousel-slide"
+      );
+      // ... (resto del código del carrusel si existe en esta página, si no, se puede quitar o dejar la comprobación)
+      if (testimonioSlide /* ... */) {
+        /* ... */
+      }
+
+      // ==========================================================
+      // FUNCIONALIDAD CONTADOR ANIMADO - Solo funcionará en index.html
+      // ==========================================================
+      const counters = document.querySelectorAll(".numero");
+      // ... (resto del código del contador si existe en esta página, si no, se puede quitar o dejar la comprobación)
+      if (counters.length > 0) {
+        /* ... */
+      }
+
+      // ==========================================================
+      // FUNCIONALIDAD DARK MODE TOGGLE (CÓDIGO COMPLETO)
+      // ==========================================================
+      const themeToggle = document.getElementById("theme-toggle-button");
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+      }
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          let theme = document.documentElement.getAttribute("data-theme");
+          if (theme === "dark") {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.removeItem("theme");
+          } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      }
+      // --- Fin Funcionalidad Dark Mode Toggle ---
+
+      // ==========================================================
+      // FUNCIONALIDAD MENÚ MÓVIL HAMBURGUESA (Necesario en todas las páginas)
+      // ==========================================================
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const mainNav = document.querySelector(".main-nav");
+      if (mobileMenuToggle && mainNav) {
+        mobileMenuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+          const isExpanded = mainNav.classList.contains("active");
+          mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
+          const icon = mobileMenuToggle.querySelector("i");
+          if (isExpanded) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+            mobileMenuToggle.setAttribute("aria-label", "Cerrar menú");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+            mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
+          }
+        });
+      }
+      // --- Fin Funcionalidad Menú Móvil ---
+
+      // ==========================================================
+      // JS ESPECÍFICO PARA CLASES.HTML (Si hubiera)
+      // ==========================================================
+      // Por ejemplo, si necesitaras JS para un masonry grid más complejo
+      // o para abrir detalles de clases en un modal.
+    </script>
+  </body>
+</html>

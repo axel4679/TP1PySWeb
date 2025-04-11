@@ -1,0 +1,410 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS PÁGINA BLOG (blog.css) - Estilo Newspaper
+   ========================================================================== */
+
+/* ... (Estilos base heredados, header, footer, etc.) ... */
+
+/* ==========================================================================
+   Filtros CSS para Tags/Categorías
+   ========================================================================== */
+
+.filtros-blog {
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.filtros-blog h2 {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-unit);
+  color: var(--secondary-color);
+}
+.filtros-blog input[type="radio"] {
+  display: none;
+} /* Oculta los radios reales */
+.filtros-blog label {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 0.4) calc(var(--spacing-unit) * 0.9);
+  margin: 0 calc(var(--spacing-unit) * 0.3) calc(var(--spacing-unit) * 0.5);
+  background-color: var(--light-color);
+  color: var(--grey-color);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.filtros-blog input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.filtros-blog label:hover {
+  background-color: var(--grey-color);
+  color: var(--white-color);
+}
+.filtros-blog input[type="radio"]:checked + label:hover {
+  background-color: #c0392b;
+}
+
+/* ==========================================================================
+     Texto Descriptivo del Filtro
+     ========================================================================== */
+
+.filtro-descripcion {
+  text-align: center;
+  margin-top: calc(var(--spacing-unit) * 0.5);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  min-height: 1.6em;
+}
+.filtro-descripcion p {
+  display: none;
+  font-style: italic;
+  color: var(--grey-color);
+  font-size: 0.9rem;
+}
+/* Mostrar descripción según el filtro chequeado */
+#blog-todos:checked ~ .filtro-descripcion #desc-todos {
+  display: block;
+}
+#blog-nutricion:checked ~ .filtro-descripcion #desc-nutricion {
+  display: block;
+}
+#blog-entrenamiento:checked ~ .filtro-descripcion #desc-entrenamiento {
+  display: block;
+}
+#blog-bienestar:checked ~ .filtro-descripcion #desc-bienestar {
+  display: block;
+}
+/* Ocultar la descripción de "Todos" si otro filtro está activo */
+#blog-nutricion:checked ~ .filtro-descripcion #desc-todos,
+#blog-entrenamiento:checked ~ .filtro-descripcion #desc-todos,
+#blog-bienestar:checked ~ .filtro-descripcion #desc-todos {
+  display: none;
+}
+
+/* ==========================================================================
+     Lógica de Filtrado de Posts (REVISADA Y CLAVE)
+     ========================================================================== */
+
+/* 1. Por defecto, CADA post es FLEX (visible en layout) */
+.blog-post {
+  /* ... otros estilos del post ... */
+  display: flex; /* Asegura que este sea el display base */
+  flex-direction: column;
+  /* Estilos Scroll Reveal (hacen que sea invisible inicialmente) */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.blog-post.visible {
+  /* Clase añadida por JS */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Ocultar posts que NO coincidan cuando un filtro de CATEGORÍA está activo */
+/*    IMPORTANTE: Verifica que los IDs (#blog-...) y las clases (.nutricion, etc.) coincidan EXACTAMENTE con tu HTML */
+#blog-nutricion:checked ~ .blog-grid > .blog-post:not(.nutricion),
+#blog-entrenamiento:checked ~ .blog-grid > .blog-post:not(.entrenamiento),
+#blog-bienestar:checked ~ .blog-grid > .blog-post:not(.bienestar) {
+  display: none !important; /* Oculta los que NO son de la categoría seleccionada. !important como último recurso si hay conflictos */
+}
+
+/* 3. Cuando #blog-todos está checked, las reglas de arriba no se aplican,
+        por lo que ningún post recibe display: none por el filtro,
+        y se muestran todos los que tienen display: flex por defecto. */
+
+/* ==========================================================================
+     Diseño "Newspaper" con CSS Grid
+     ========================================================================== */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: calc(var(--spacing-unit) * 1.8);
+}
+
+/* ... (Resto de estilos para .blog-post img, .post-content, .post-destacado, etc. sin cambios) ... */
+.blog-post img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  transition: clip-path 0.3s ease;
+}
+.blog-post:hover img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.post-content {
+  padding: var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.post-category {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+.post-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  line-height: 1.4;
+}
+.post-content h2 a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.post-content h2 a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.post-excerpt {
+  font-size: 0.95rem;
+  color: var(--grey-color);
+  flex-grow: 1;
+  margin-bottom: var(--spacing-unit);
+  line-height: 1.6;
+}
+.post-meta {
+  font-size: 0.8rem;
+  color: var(--grey-color);
+  border-top: 1px solid var(--border-color);
+  padding-top: calc(var(--spacing-unit) * 0.5);
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.post-meta span,
+.post-meta a {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+.post-meta i {
+  margin-right: 4px;
+  color: var(--primary-color);
+}
+.post-meta a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.post-meta a:hover {
+  text-decoration: underline;
+}
+.post-destacado {
+  grid-column: span 2;
+}
+.post-destacado img {
+  height: 300px;
+}
+.post-destacado h2 {
+  font-size: 1.8rem;
+}
+.post-destacado .post-excerpt {
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+     Sección de Comentarios Estilizada (Sin cambios)
+     ========================================================================== */
+/* ... (Estilos de comentarios sin cambios) ... */
+.comentarios-section {
+  margin-top: calc(var(--spacing-unit) * 3);
+  padding-top: calc(var(--spacing-unit) * 2);
+  border-top: 2px solid var(--primary-color);
+}
+.comentarios-section h3 {
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  text-align: center;
+  font-size: 1.6rem;
+}
+.comentario {
+  display: flex;
+  gap: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  padding-bottom: calc(var(--spacing-unit) * 1.5);
+  border-bottom: 1px dashed var(--border-color);
+}
+.comentario:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.comentario-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comentario-avatar::before {
+  content: attr(data-initials);
+}
+.comentario-body {
+  flex-grow: 1;
+}
+.comentario-autor {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-right: var(--spacing-unit);
+}
+.comentario-fecha {
+  font-size: 0.8rem;
+  color: var(--grey-color);
+}
+.comentario-body p {
+  margin-top: calc(var(--spacing-unit) * 0.3);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.responder-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+.responder-link:hover {
+  text-decoration: underline;
+}
+.comentario-respuesta {
+  margin-left: calc(var(--spacing-unit) * 3);
+}
+
+/* ==========================================================================
+     Paginación (ELIMINADA)
+     ========================================================================== */
+
+/* ==========================================================================
+     Overrides Específicos Modo Oscuro para Página Blog (Sin cambios relevantes para el filtro)
+     ========================================================================== */
+/* ... (Estilos modo oscuro sin cambios) ... */
+[data-theme="dark"] .filtros-blog {
+  border-bottom-color: #444;
+}
+[data-theme="dark"] .filtros-blog label {
+  background-color: #3a3a3a;
+  color: var(--grey-color);
+  border-color: #555;
+}
+[data-theme="dark"] .filtros-blog input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+[data-theme="dark"] .filtros-blog label:hover {
+  background-color: #555;
+  color: var(--white-color);
+}
+[data-theme="dark"] .filtros-blog input[type="radio"]:checked + label:hover {
+  background-color: #c0392b;
+}
+[data-theme="dark"] .filtro-descripcion p {
+  color: var(--grey-color);
+}
+[data-theme="dark"] .blog-post {
+  background-color: var(--card-bg-color);
+  border-color: #444;
+}
+[data-theme="dark"] .post-content h2 a {
+  color: var(--light-color);
+}
+[data-theme="dark"] .post-content h2 a:hover {
+  color: var(--primary-color);
+}
+[data-theme="dark"] .post-excerpt {
+  color: var(--grey-color);
+}
+[data-theme="dark"] .post-meta {
+  color: var(--grey-color);
+  border-top-color: #444;
+}
+[data-theme="dark"] .post-meta i {
+  color: var(--primary-color);
+}
+[data-theme="dark"] .post-meta a {
+  color: var(--secondary-color);
+}
+[data-theme="dark"] .comentarios-section {
+  border-top-color: var(--primary-color);
+}
+[data-theme="dark"] .comentario {
+  border-bottom-color: #444;
+}
+[data-theme="dark"] .comentario-avatar {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+[data-theme="dark"] .comentario-autor {
+  color: var(--primary-color);
+}
+[data-theme="dark"] .comentario-fecha {
+  color: var(--grey-color);
+}
+[data-theme="dark"] .comentario-body p {
+  color: var(--light-color);
+}
+[data-theme="dark"] .responder-link {
+  color: var(--secondary-color);
+}
+
+/* ==========================================================================
+     Ajustes Responsivos para Página Blog (Estilo Newspaper)
+     ========================================================================== */
+/* ... (Estilos responsivos sin cambios) ... */
+@media (max-width: 991.98px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .post-destacado {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .post-destacado img {
+    height: 300px;
+  }
+}
+@media (max-width: 767.98px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 1.5);
+  }
+  .post-destacado {
+    grid-column: span 1;
+  }
+  .post-destacado img {
+    height: 250px;
+  }
+  .post-destacado h2 {
+    font-size: 1.5rem;
+  }
+  .comentario {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .comentario-respuesta {
+    margin-left: var(--spacing-unit);
+  }
+}

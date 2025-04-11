@@ -1,0 +1,446 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS PÁGINA ENTRENADORES (entrenadores.css)
+   ========================================================================== */
+
+/* Hereda estilos base, variables, .container, .section-padding, .section-title,
+   .cards-container grid, header, footer, variables modo oscuro de style.css */
+
+/* ==========================================================================
+   Layout Sección Entrenadores
+   ========================================================================== */
+
+#entrenadores-page .lead {
+  max-width: 700px; /* Limita ancho del párrafo introductorio */
+  margin-left: auto;
+  margin-right: auto;
+  /* Equivalente a mb-5 - Asumiendo --spacing-unit es 1rem */
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+/* Reutiliza .cards-container de style.css para el layout grid */
+.entrenadores-container {
+  /* Los estilos probablemente ya están en .cards-container de style.css */
+  /* Si no, añade estilos grid aquí: */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  /* gap: calc(var(--spacing-unit) * 1.5); */
+}
+
+/* ==========================================================================
+     Efecto Flip Card para Entrenadores
+     ========================================================================== */
+
+.entrenador-card {
+  background-color: transparent; /* El contenedor es solo para perspectiva */
+  min-height: 420px; /* Ajusta altura según necesidad */
+  perspective: 1000px; /* Punto de fuga para efecto 3D */
+  border: none; /* Quitar borde por defecto de .card si existe */
+  box-shadow: none; /* Quitar sombra por defecto de .card si existe */
+  /* Quitar overflow:hidden si viene de .card */
+  overflow: visible;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s cubic-bezier(0.5, 0, 0.5, 1); /* Transición suave del flip */
+  transform-style: preserve-3d; /* Mantiene elementos hijos en espacio 3D */
+}
+
+/* Aplica efecto hover al contenedor de la tarjeta */
+.entrenador-card:hover .card-inner {
+  transform: rotateY(180deg); /* Gira la tarjeta al hacer hover */
+}
+
+/* Estilos Comunes Cara Frontal y Trasera */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden; /* Oculta la cara trasera cuando no está visible */
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: calc(var(--spacing-unit) * 1.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow); /* Añade sombra a las caras */
+  border: 1px solid var(--border-color);
+}
+
+/* Estilos Específicos Cara Frontal */
+.card-front {
+  background-color: var(--card-bg-color); /* Usa variable de fondo de tarjeta */
+  color: var(--text-color); /* Usa variable de color de texto */
+}
+
+.entrenador-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-unit);
+  border: 4px solid var(--primary-color); /* Borde con color primario */
+}
+
+.card-front h3 {
+  margin-bottom: calc(var(--spacing-unit) * 0.3);
+  color: var(--primary-color); /* Nombre con color primario */
+}
+
+.card-front p {
+  color: var(--grey-color); /* Especialidad con color gris */
+  font-size: 0.95rem;
+  margin-bottom: auto; /* Empuja el indicador hacia abajo */
+  padding-top: var(--spacing-unit);
+}
+
+.flip-indicator {
+  font-size: 0.8rem;
+  color: var(--secondary-color); /* Indicador con color secundario */
+  margin-top: var(--spacing-unit);
+  opacity: 0.8;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.flip-indicator i {
+  transition: transform 0.3s ease;
+}
+/* Animación del icono de giro */
+.entrenador-card:hover .flip-indicator i {
+  transform: rotate(360deg);
+}
+
+/* Estilos Específicos Cara Trasera */
+.card-back {
+  background-color: var(--secondary-color); /* Fondo azul (ejemplo) */
+  color: var(--white-color); /* Texto blanco */
+  transform: rotateY(180deg); /* Rotada inicialmente */
+  justify-content: space-around; /* Distribuye contenido verticalmente */
+  padding: calc(var(--spacing-unit) * 1.2);
+}
+
+.card-back h4 {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  color: var(--white-color);
+}
+
+.card-back p {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-unit);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+     Barras de Habilidades Animadas
+     ========================================================================== */
+
+.skills-section {
+  width: 90%;
+  margin: var(--spacing-unit) auto;
+}
+
+.skills-section h5 {
+  text-align: left;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.skill {
+  margin-bottom: calc(var(--spacing-unit) * 0.6);
+  text-align: left;
+}
+
+.skill-name {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.skill-bar {
+  height: 8px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3); /* Fondo claro para la barra */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background-color: var(--primary-color); /* Relleno con color primario */
+  border-radius: 10px;
+  width: 0; /* Empieza con ancho 0 */
+  /* Anima el ancho usando transition cuando la tarjeta se gira (hover) */
+  transition: width 1.5s 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Delay permite que el flip comience */
+}
+
+/* Aplica el ancho cuando la tarjeta está girada (hover) */
+.entrenador-card:hover .skill-level {
+  width: var(--level); /* Usa la variable CSS definida en el style del HTML */
+}
+
+/* ==========================================================================
+     Sistema de Rating con Estrellas (CSS-Only)
+     ========================================================================== */
+
+.rating-section {
+  width: 90%;
+  margin: var(--spacing-unit) auto 0;
+}
+
+.rating-section h5 {
+  text-align: left;
+  margin-bottom: calc(var(--spacing-unit) * 0.3);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.rating-stars {
+  font-size: 1.3rem;
+  color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Color por defecto estrella 'vacía' sobre fondo oscuro */
+  text-align: left;
+}
+
+.rating-stars i {
+  display: inline-block; /* Permite transform */
+  transition: transform 0.2s ease-in-out, color 0.3s ease;
+  cursor: default; /* Indica que no son clickeables */
+}
+
+/* Colorea estrellas basado en el atributo data-rating */
+/* Selecciona las primeras N estrellas según el rating */
+.rating-stars[data-rating="1"] i:nth-child(-n + 1),
+.rating-stars[data-rating="2"] i:nth-child(-n + 2),
+.rating-stars[data-rating="3"] i:nth-child(-n + 3),
+.rating-stars[data-rating="4"] i:nth-child(-n + 4),
+.rating-stars[data-rating="5"] i:nth-child(-n + 5) {
+  color: #f1c40f; /* Color dorado para estrellas llenas */
+}
+
+/* Animación simple de escala al hacer hover en la tarjeta (cuando está girada) */
+/* Escalonar la animación usando una variable CSS --i */
+.entrenador-card:hover .rating-stars i {
+  transform: scale(1.1) rotate(5deg);
+  transition-delay: calc(
+    0.1s * var(--i, 1)
+  ); /* Escalonar animación, delay por defecto 0.1s */
+}
+
+/* Asigna índice para escalonar animación (opcional pero agradable) */
+.rating-stars i:nth-child(1) {
+  --i: 1;
+}
+.rating-stars i:nth-child(2) {
+  --i: 2;
+}
+.rating-stars i:nth-child(3) {
+  --i: 3;
+}
+.rating-stars i:nth-child(4) {
+  --i: 4;
+}
+.rating-stars i:nth-child(5) {
+  --i: 5;
+}
+
+/* ==========================================================================
+     Overrides Específicos Modo Oscuro para Página Entrenadores
+     ========================================================================== */
+
+[data-theme="dark"] .card-front {
+  background-color: var(
+    --card-bg-color
+  ); /* Usa fondo oscuro de tarjeta de style.css */
+  color: var(--text-color); /* Usa color de texto oscuro de style.css */
+  border-color: #444;
+}
+
+[data-theme="dark"] .card-front h3 {
+  color: var(--primary-color); /* Mantiene color primario para nombre */
+}
+
+[data-theme="dark"] .card-front p {
+  color: var(--grey-color);
+}
+
+[data-theme="dark"] .flip-indicator {
+  color: var(--secondary-color);
+}
+
+[data-theme="dark"] .card-back {
+  background-color: #3a5a78; /* Azul/gris oscuro ligeramente diferente para contraste */
+  color: var(--light-color); /* Usa color de texto claro de style.css */
+  border-color: #555;
+}
+
+[data-theme="dark"] .card-back h4 {
+  color: var(--white-color);
+}
+
+[data-theme="dark"] .skill-bar {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Fondo más oscuro para barra de habilidad */
+}
+
+[data-theme="dark"] .skill-level {
+  background-color: var(--primary-color); /* Mantiene color de relleno */
+}
+
+[data-theme="dark"] .rating-stars {
+  color: rgba(255, 255, 255, 0.3); /* Estrellas vacías más tenues */
+}
+
+/* Asegura que estrellas llenas sigan doradas en modo oscuro */
+[data-theme="dark"] .rating-stars[data-rating="1"] i:nth-child(-n + 1),
+[data-theme="dark"] .rating-stars[data-rating="2"] i:nth-child(-n + 2),
+[data-theme="dark"] .rating-stars[data-rating="3"] i:nth-child(-n + 3),
+[data-theme="dark"] .rating-stars[data-rating="4"] i:nth-child(-n + 4),
+[data-theme="dark"] .rating-stars[data-rating="5"] i:nth-child(-n + 5) {
+  color: #f1c40f; /* Mantiene color dorado */
+}
+
+/* ==========================================================================
+     Ajustes Responsivos para Página Entrenadores
+     ========================================================================== */
+
+@media (max-width: 767.98px) {
+  .entrenador-card {
+    min-height: 400px; /* Reduce altura mín. en móvil */
+  }
+  .entrenador-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  .card-front h3,
+  .card-back h4 {
+    font-size: 1.3rem;
+  }
+  .card-back p,
+  .skills-section,
+  .rating-section {
+    font-size: 0.85rem;
+  }
+  .rating-stars {
+    font-size: 1.1rem;
+  }
+}
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS PÁGINA ENTRENADORES (entrenadores.css)
+   ========================================================================== */
+
+/* ... (Estilos anteriores: Layout, Flip Card, Skill Bars) ... */
+
+/* ==========================================================================
+   Sistema de Rating INTERACTIVO con Estrellas (CSS-Only)
+   ========================================================================== */
+
+.rating-section {
+  width: 90%;
+  margin: var(--spacing-unit) auto 0;
+}
+
+.rating-section h5 {
+  text-align: left;
+  margin-bottom: calc(var(--spacing-unit) * 0.3);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Contenedor de las estrellas interactivas */
+.rating-stars-interactive {
+  display: flex; /* Para usar flex-direction */
+  flex-direction: row-reverse; /* Invierte el orden visual de los labels (5 a 1) */
+  justify-content: flex-end; /* Alinea las estrellas a la izquierda (porque está invertido) */
+  /* justify-content: center; // Descomentar para centrar */
+}
+
+/* Oculta los radio buttons reales */
+.rating-stars-interactive input[type="radio"] {
+  display: none;
+}
+
+/* Estilo base de las estrellas (labels) */
+.rating-stars-interactive label {
+  font-size: 1.6rem; /* Tamaño de la estrella */
+  color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Color estrella vacía (sobre fondo oscuro de card-back) */
+  cursor: pointer;
+  transition: color 0.2s ease-out,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Transición suave para color y animación */
+  padding: 0 2px; /* Pequeño espacio entre estrellas */
+}
+
+/* Estilo al pasar el ratón sobre una estrella Y las anteriores (visualmente) */
+.rating-stars-interactive label:hover,
+.rating-stars-interactive label:hover ~ label {
+  color: #ffdd44; /* Amarillo más brillante al hacer hover */
+  transform: scale(1.2) rotate(-5deg); /* Animación de hover */
+}
+
+/* Estilo de la estrella seleccionada Y las anteriores (visualmente) */
+.rating-stars-interactive input[type="radio"]:checked ~ label {
+  color: #f1c40f; /* Color dorado final al seleccionar */
+  transform: scale(1.1) rotate(2deg); /* Animación al seleccionar */
+}
+
+/* ==========================================================================
+     Overrides Específicos Modo Oscuro para Página Entrenadores
+     ========================================================================== */
+
+/* ... (Estilos dark mode para .card-front, .card-back, .skill-bar sin cambios) ... */
+
+[data-theme="dark"] .rating-stars-interactive label {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Estrellas vacías un poco más tenues en dark */
+}
+
+[data-theme="dark"] .rating-stars-interactive label:hover,
+[data-theme="dark"] .rating-stars-interactive label:hover ~ label {
+  color: #ffdd44; /* Mantiene amarillo brillante en hover */
+}
+
+[data-theme="dark"]
+  .rating-stars-interactive
+  input[type="radio"]:checked
+  ~ label {
+  color: #f1c40f; /* Mantiene dorado en selección */
+}
+
+/* ==========================================================================
+     Ajustes Responsivos para Página Entrenadores
+     ========================================================================== */
+
+@media (max-width: 767.98px) {
+  /* ... (Estilos responsivos anteriores sin cambios) ... */
+  .rating-stars-interactive label {
+    font-size: 1.4rem; /* Estrellas un poco más pequeñas en móvil */
+  }
+}

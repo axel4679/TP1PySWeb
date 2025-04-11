@@ -1,0 +1,1281 @@
+/* ==========================================================================
+   1. BASE STYLES, VARIABLES & UTILITIES
+   ========================================================================== */
+
+/* Reset básico y Modelo de Cajas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables CSS (Custom Properties) */
+:root {
+  --primary-color: #e74c3c; /* Rojo anaranjado vibrante */
+  --secondary-color: #3498db; /* Azul claro */
+  --dark-color: #2c3e50; /* Azul oscuro/gris */
+  --light-color: #ecf0f1; /* Gris muy claro */
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --grey-color: #95a5a6; /* Gris medio */
+  --success-color: #2ecc71; /* Verde */
+  --error-color: #e74c3c; /* Rojo (mismo que primario) */
+
+  --background-color: var(--white-color);
+  --text-color: var(--dark-color);
+  --card-bg-color: var(--white-color);
+  --header-bg: var(--white-color);
+  --footer-bg: var(--dark-color);
+  --footer-text: var(--light-color);
+  --border-color: #dddddd;
+
+  --font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-headings: "Montserrat", sans-serif; /* Ejemplo, añadir import si es de Google Fonts */
+
+  --base-font-size: 16px;
+  --line-height-base: 1.6;
+  --spacing-unit: 1rem; /* 16px */
+
+  --transition-speed: 0.3s;
+  --border-radius: 4px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Base para el Body */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--base-font-size);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+  overflow-x: hidden; /* Prevenir scroll horizontal inesperado */
+}
+
+/* Estilos Base para Encabezados y Párrafos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-headings);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  line-height: 1.3;
+  color: inherit; /* Hereda color del padre, útil para secciones con color de fondo */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Estilos Base para Enlaces */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Estilos Base para Imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Evitar espacio extra debajo */
+}
+
+/* Estilos Base para Listas */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Contenedor Principal */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-unit);
+  padding-right: var(--spacing-unit);
+}
+
+/* Utilidades de Espaciado y Texto */
+.section-padding {
+  padding-top: calc(var(--spacing-unit) * 4);
+  padding-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.text-light {
+  color: var(--light-color) !important;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Utilidades de Fondo */
+.bg-dark {
+  background-color: var(--dark-color);
+}
+.bg-light {
+  background-color: var(--light-color);
+}
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+/* Estilos para Botones */
+.btn {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 1.5);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--base-font-size);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn-primary:hover {
+  background-color: #c0392b; /* Tono más oscuro de primary */
+  color: var(--white-color);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.btn-secondary:hover {
+  background-color: #2980b9; /* Tono más oscuro de secondary */
+  color: var(--white-color);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-lg {
+  padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 2);
+  font-size: 1.1rem;
+}
+
+/* Accesibilidad: Estilos de Foco Visibles */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); /* Sombra suave de foco */
+}
+/* Quitar outline si se usa box-shadow u otra técnica */
+*:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+*:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+/* ==========================================================================
+     2. HEADER & NAVIGATION
+     ========================================================================== */
+
+header {
+  background-color: var(--header-bg);
+  box-shadow: var(--box-shadow);
+  padding: calc(var(--spacing-unit) * 0.5) 0;
+  position: sticky; /* Header fijo al hacer scroll */
+  top: 0;
+  z-index: 1000;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 50px; /* Ajusta según el tamaño de tu logo */
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav li {
+  margin-left: var(--spacing-unit);
+}
+
+.main-nav a {
+  padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 0.8);
+  color: var(--text-color);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+}
+
+.main-nav a::after {
+  /* Efecto subrayado sutil en hover/active */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width var(--transition-speed) ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--primary-color);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 80%; /* Ancho del subrayado */
+}
+
+/* Mega Menú */
+.has-megamenu {
+  position: relative;
+}
+
+.mega-menu {
+  display: none; /* Oculto por defecto */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--white-color);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-unit);
+  min-width: 500px; /* Ancho mínimo del mega menú */
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--transition-speed) ease,
+    visibility var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+  display: flex; /* Usar flex para las columnas */
+  gap: var(--spacing-unit);
+}
+
+.has-megamenu:hover .mega-menu {
+  display: flex; /* Mostrar al hacer hover */
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-menu-column {
+  flex: 1; /* Cada columna ocupa espacio igual */
+}
+
+.mega-menu-column h4 {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: calc(var(--spacing-unit) * 0.3);
+}
+.mega-menu-column h4 a {
+  color: var(--dark-color);
+  font-weight: 600;
+}
+.mega-menu-column h4 a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.mega-menu-column h4 a::after {
+  /* Quitar subrayado del título */
+  display: none;
+}
+
+.mega-menu-column ul li {
+  margin-left: 0;
+  margin-bottom: calc(var(--spacing-unit) * 0.3);
+}
+
+.mega-menu-column ul li a {
+  padding: 0;
+  font-weight: 400;
+  color: var(--grey-color);
+}
+.mega-menu-column ul li a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.mega-menu-column ul li a::after {
+  /* Quitar subrayado de los items */
+  display: none;
+}
+
+/* Botón Dark Mode y Menú Móvil */
+.theme-toggle,
+.mobile-menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  padding: calc(var(--spacing-unit) * 0.5);
+  margin-left: var(--spacing-unit);
+}
+
+.mobile-menu-toggle {
+  display: none; /* Oculto en escritorio */
+}
+
+/* ==========================================================================
+     3. HERO SECTION
+     ========================================================================== */
+
+#hero {
+  position: relative;
+  height: 90vh; /* Altura casi completa de la ventana */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white-color);
+  overflow: hidden; /* Asegura que el video no se desborde */
+}
+
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1; /* Detrás del contenido y overlay */
+  object-fit: cover; /* Cubre todo el área */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Overlay oscuro semitransparente */
+  z-index: 0; /* Entre el video y el contenido */
+}
+
+.hero-content {
+  position: relative; /* Encima del overlay */
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-unit);
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animaciones para el texto del Hero */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-text-pop {
+  animation: popIn 0.8s ease-out forwards;
+}
+
+.animate-text-fade {
+  animation: fadeInUp 0.8s 0.3s ease-out forwards; /* Retraso de 0.3s */
+  opacity: 0; /* Empieza oculto */
+}
+
+.animate-button-scale {
+  animation: fadeInUp 0.8s 0.6s ease-out forwards; /* Retraso mayor */
+  opacity: 0; /* Empieza oculto */
+}
+.animate-button-scale:hover {
+  animation: scaleUp 0.5s ease infinite; /* Animación sutil en hover */
+}
+
+/* Indicador de Scroll */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white-color);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  opacity: 0.8;
+}
+.scroll-down-indicator:hover {
+  opacity: 1;
+  color: var(--white-color); /* Asegurar color en hover */
+  text-decoration: none; /* Quitar subrayado */
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* ==========================================================================
+     4. CLASES DESTACADAS (CARDS)
+     ========================================================================== */
+
+#clases-destacadas {
+  background-color: var(--light-color); /* Fondo ligeramente diferente */
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Columnas responsivas */
+  gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Para que la imagen no se salga */
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido esté debajo de la imagen */
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  transition: transform var(--transition-speed) ease;
+}
+
+.card-content {
+  padding: var(--spacing-unit);
+  flex-grow: 1; /* Permite que el contenido crezca para llenar el espacio */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.card-content p {
+  flex-grow: 1; /* Empuja el botón hacia abajo */
+  margin-bottom: var(--spacing-unit);
+}
+
+.card-content .btn {
+  margin-top: auto; /* Asegura que el botón esté al final */
+  align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+
+/* Efecto Hover para las Tarjetas */
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-hover-effect:hover .card-image img {
+  transform: scale(1.05); /* Ligero zoom en la imagen */
+}
+
+/* ==========================================================================
+     5. CONTADOR ANIMADO
+     ========================================================================== */
+
+#contador {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.counter-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-unit);
+  text-align: center;
+}
+
+.counter-item .numero {
+  font-size: 3rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: calc(var(--spacing-unit) * 0.2);
+  /* La animación del número requiere JS, aquí solo estilizamos */
+}
+
+.counter-item p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+     6. TESTIMONIOS (CARRUSEL CSS)
+     ========================================================================== */
+
+#testimonios {
+  background-color: var(--background-color); /* Fondo normal */
+}
+
+.carousel-css-container {
+  position: relative;
+  max-width: 800px; /* Ancho máximo del carrusel */
+  margin: 0 auto; /* Centrar el carrusel */
+  overflow: hidden; /* Ocultar slides que no se muestran */
+  padding-bottom: 50px; /* Espacio para los puntos de navegación */
+}
+
+/* Ocultar los radio buttons */
+.carousel-radio {
+  display: none;
+}
+
+.carousel-slides {
+  /* No se necesita flex ni transition aquí, controlamos con display */
+  position: relative;
+  width: 100%;
+}
+
+.carousel-slide {
+  display: none; /* Ocultar todos los slides por defecto */
+  padding: var(--spacing-unit);
+  text-align: center;
+  animation: fadeEffect 1s; /* Animación de aparición */
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.testimonial-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-unit);
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+.carousel-slide blockquote {
+  font-style: italic;
+  color: var(--grey-color);
+  margin-bottom: var(--spacing-unit);
+  position: relative;
+  padding: 0 calc(var(--spacing-unit) * 2); /* Espacio para comillas */
+}
+
+.carousel-slide blockquote::before,
+.carousel-slide blockquote::after {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary-color);
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+}
+.carousel-slide blockquote::before {
+  left: 0;
+}
+.carousel-slide blockquote::after {
+  right: 0;
+  content: '"';
+  top: auto;
+  bottom: -20px;
+}
+
+.carousel-slide cite {
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+/* Lógica para mostrar el slide activo */
+#tslide1:checked ~ .carousel-slides #testimonio1,
+#tslide2:checked ~ .carousel-slides #testimonio2,
+#tslide3:checked ~ .carousel-slides #testimonio3 {
+  display: block;
+}
+
+/* Navegación con Puntos */
+.carousel-nav {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.nav-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--grey-color);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.nav-dot:hover {
+  background-color: var(--dark-color);
+}
+
+/* Estilo del punto activo */
+#tslide1:checked ~ .carousel-nav label[for="tslide1"],
+#tslide2:checked ~ .carousel-nav label[for="tslide2"],
+#tslide3:checked ~ .carousel-nav label[for="tslide3"] {
+  background-color: var(--primary-color);
+}
+
+/* ==========================================================================
+     7. FOOTER
+     ========================================================================== */
+
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+.footer-col h4 {
+  margin-bottom: var(--spacing-unit);
+  color: var(--white-color);
+  position: relative;
+  padding-bottom: calc(var(--spacing-unit) * 0.5);
+}
+/* Línea decorativa bajo los títulos del footer */
+.footer-col h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.footer-col p {
+  margin-bottom: var(--spacing-unit);
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Formulario Newsletter */
+.newsletter-form {
+  display: flex;
+  margin-top: var(--spacing-unit);
+  flex-wrap: wrap; /* Permitir que el botón baje en pantallas pequeñas */
+}
+
+.newsletter-form input[type="email"] {
+  flex-grow: 1;
+  padding: calc(var(--spacing-unit) * 0.6);
+  border: 1px solid var(--grey-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  background-color: #4e5d6c; /* Fondo ligeramente más claro que el footer */
+  color: var(--light-color);
+  min-width: 150px; /* Ancho mínimo antes de envolver */
+}
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--grey-color);
+  opacity: 0.8;
+}
+
+.newsletter-form button {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding-left: var(--spacing-unit);
+  padding-right: var(--spacing-unit);
+}
+
+/* Enlaces Rápidos y Sociales */
+.footer-links li,
+.social-links li {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.footer-links a {
+  color: var(--footer-text);
+  opacity: 0.9;
+  text-decoration: none;
+  transition: color var(--transition-speed) ease,
+    padding-left var(--transition-speed) ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  padding-left: 5px; /* Pequeño desplazamiento en hover */
+  text-decoration: none;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-unit);
+}
+
+.social-links a {
+  color: var(--footer-text);
+  font-size: 1.5rem;
+  transition: color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+/* Mapa */
+.map-container {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: var(--spacing-unit);
+  border: 2px solid var(--grey-color);
+}
+
+.map-container iframe {
+  display: block; /* Eliminar espacio extra */
+  border: none; /* Quitar borde del iframe si lo tuviera */
+}
+
+.footer-col.footer-map p {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 0.5);
+}
+.footer-col.footer-map i {
+  color: var(--primary-color);
+}
+
+/* Barra Inferior del Footer */
+.footer-bottom {
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding-top: var(--spacing-unit);
+  border-top: 1px solid var(--grey-color);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+     8. DARK MODE
+     ========================================================================== */
+
+[data-theme="dark"] {
+  --background-color: #1a1a1a; /* Fondo muy oscuro */
+  --text-color: var(--light-color);
+  --card-bg-color: #2c2c2c; /* Gris oscuro para tarjetas */
+  --header-bg: #252525; /* Fondo oscuro para header */
+  --dark-color: #333333; /* Ajustar si es necesario */
+  --light-color: #f1f1f1; /* Ajustar si es necesario */
+  --border-color: #444444; /* Borde más oscuro */
+  --footer-bg: #111111; /* Footer aún más oscuro */
+  --footer-text: #cccccc; /* Texto ligeramente más apagado en footer */
+
+  /* Ajustar colores primario/secundario si se ven mal en fondo oscuro */
+  /* --primary-color: #ff6b6b; */ /* Ejemplo: Rojo más brillante */
+  /* --secondary-color: #54a0ff; */ /* Ejemplo: Azul más brillante */
+
+  /* Estilos específicos para elementos en modo oscuro si es necesario */
+  .logo img {
+    /* Podrías usar filter: invert(1) brightness(1.5); si el logo es oscuro */
+  }
+
+  .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay un poco más opaco */
+  }
+
+  .card {
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra clara sutil */
+  }
+
+  .newsletter-form input[type="email"] {
+    background-color: #3a3a3a;
+    border-color: #555;
+  }
+  .newsletter-form input[type="email"]::placeholder {
+    color: #888;
+  }
+
+  .footer-bottom {
+    border-top-color: #444;
+  }
+
+  .nav-dot {
+    background-color: #555;
+  }
+  #tslide1:checked ~ .carousel-nav label[for="tslide1"],
+  #tslide2:checked ~ .carousel-nav label[for="tslide2"],
+  #tslide3:checked ~ .carousel-nav label[for="tslide3"] {
+    background-color: var(
+      --primary-color
+    ); /* Mantener color primario para activo */
+  }
+
+  .theme-toggle i::before {
+    /* Cambiar icono luna/sol */
+    content: "\f185"; /* Código FontAwesome para el sol */
+  }
+}
+
+/* Estilo inicial del botón de tema (luna) */
+.theme-toggle i::before {
+  content: "\f186"; /* Código FontAwesome para la luna */
+  font-family: "Font Awesome 6 Free"; /* Asegurar la fuente */
+  font-weight: 900; /* Usar fuente sólida */
+}
+
+/* ==========================================================================
+     9. RESPONSIVE DESIGN (Media Queries)
+     ========================================================================== */
+
+/* Tablets y pantallas pequeñas (Ej: < 992px) */
+@media (max-width: 991.98px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: calc(var(--spacing-unit) * 1.5);
+  }
+}
+
+/* Dispositivos móviles (Ej: < 768px) */
+@media (max-width: 767.98px) {
+  :root {
+    --base-font-size: 15px; /* Ligeramente más pequeño en móviles */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+  .section-padding {
+    padding-top: calc(var(--spacing-unit) * 3);
+    padding-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  /* Header Móvil */
+  .main-nav {
+    display: none; /* Ocultar menú de escritorio */
+    /* Aquí irían los estilos del menú desplegable/lateral si se implementa con JS/CSS */
+    /* position: absolute; top: 100%; left: 0; width: 100%; background: var(--header-bg); etc. */
+  }
+  .mobile-menu-toggle {
+    display: block; /* Mostrar botón hamburguesa */
+  }
+  .header-container {
+    /* Podría necesitar ajustes si el logo es grande */
+  }
+
+  /* Hero */
+  #hero {
+    height: 75vh;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Cards */
+  .cards-container {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+    gap: var(--spacing-unit);
+  }
+
+  /* Contador */
+  .counter-container {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en móviles */
+    gap: calc(var(--spacing-unit) * 1.5);
+  }
+  .counter-item .numero {
+    font-size: 2.5rem;
+  }
+
+  /* Testimonios */
+  .carousel-slide blockquote {
+    padding: 0 var(--spacing-unit);
+  }
+  .carousel-slide blockquote::before,
+  .carousel-slide blockquote::after {
+    font-size: 2.5rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+    text-align: center; /* Centrar contenido en columnas */
+  }
+  .footer-col h4::after {
+    /* Centrar línea decorativa */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .newsletter-form {
+    justify-content: center;
+  }
+  .newsletter-form input[type="email"] {
+    border-radius: var(--border-radius); /* Redondear todo */
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    text-align: center;
+    width: 100%; /* Ocupar todo el ancho */
+  }
+  .newsletter-form button {
+    border-radius: var(--border-radius); /* Redondear todo */
+    width: 100%; /* Ocupar todo el ancho */
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .footer-col.footer-map p {
+    justify-content: center;
+  }
+}
+
+/* Pantallas muy pequeñas (Ej: < 576px) */
+@media (max-width: 575.98px) {
+  :root {
+    --base-font-size: 14px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1.2);
+  }
+  .btn-lg {
+    font-size: 1rem;
+    padding: calc(var(--spacing-unit) * 0.7) calc(var(--spacing-unit) * 1.8);
+  }
+
+  .counter-container {
+    grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+    gap: var(--spacing-unit);
+  }
+}
+/* ==========================================================================
+   1. BASE STYLES, VARIABLES & UTILITIES
+   ========================================================================== */
+/* ... (Código base sin cambios) ... */
+:root {
+  /* ... (variables sin cambios) ... */
+  --testimonial-bg: #777; /* Añadir variable para el fondo de la sección */
+  --testimonial-title-color: #f1c40f; /* Añadir variable para el título */
+  --testimonial-card-bg: var(--white-color);
+  --testimonial-card-text: #333;
+  --testimonial-button-bg: #f1c40f;
+}
+/* ... (Resto del código base sin cambios) ... */
+
+/* ==========================================================================
+       2. HEADER & NAVIGATION
+       ========================================================================== */
+/* ... (Código header sin cambios) ... */
+
+/* ==========================================================================
+       3. HERO SECTION
+       ========================================================================== */
+/* ... (Código hero sin cambios) ... */
+
+/* ==========================================================================
+       4. CLASES DESTACADAS (CARDS)
+       ========================================================================== */
+/* ... (Código clases destacadas sin cambios) ... */
+
+/* ==========================================================================
+       5. CONTADOR ANIMADO
+       ========================================================================== */
+/* ... (Código contador sin cambios) ... */
+
+/* ==========================================================================
+       6. NUEVO CARRUSEL DE TESTIMONIOS (BOTONES)
+       ========================================================================== */
+
+#testimonios {
+  /* Usamos ID en lugar de clase .testimonios */
+  background-color: var(--testimonial-bg);
+  /* padding: 50px 20px; // El padding ya viene de .section-padding */
+  text-align: center;
+  color: var(--white-color); /* Color de texto por defecto para la sección */
+}
+
+#testimonios .section-title {
+  /* Estilo específico para el título de esta sección */
+  color: var(--testimonial-title-color);
+  /* font-size: 2em; // El tamaño ya viene de .section-title */
+  /* margin-bottom: 30px; // El margen ya viene de .section-title */
+}
+
+/* Contenedor del carrusel */
+#testimonios .carousel-container {
+  position: relative;
+  max-width: 600px; /* Ajusta según cuántas tarjetas quieres que se vean parcialmente */
+  margin: auto;
+  overflow: hidden; /* Clave para que solo se vea una tarjeta */
+  /* padding: 0 50px; // Ajusta el padding si los botones quedan muy pegados */
+}
+
+/* Contenedor deslizable */
+#testimonios .carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Transición más estándar */
+  gap: 30px; /* Espacio entre tarjetas (si se vieran más de una) */
+  /* No es necesario el gap si solo se ve una tarjeta a la vez */
+}
+
+/* Tarjeta individual */
+#testimonios .testimonio-card {
+  min-width: 100%; /* Asegura que cada tarjeta ocupe todo el contenedor visible */
+  box-sizing: border-box;
+  background: var(--testimonial-card-bg);
+  color: var(--testimonial-card-text);
+  padding: calc(var(--spacing-unit) * 1.5); /* Usar variables */
+  border-radius: var(--border-radius); /* Usar variables */
+  box-shadow: var(--box-shadow); /* Usar variables */
+  text-align: center;
+  /* transition: transform 0.3s ease; // Quitar si no se usa el hover scale */
+}
+
+/* Quitar hover scale si interfiere con el carrusel */
+/* #testimonios .testimonio-card:hover {
+      transform: scale(1.05);
+  } */
+
+#testimonios .testimonio-card p {
+  font-style: italic;
+  margin-bottom: var(--spacing-unit); /* Usar variables */
+  font-size: 1rem; /* Ajustar tamaño si es necesario */
+}
+
+#testimonios .testimonio-card h4 {
+  margin: 0;
+  font-weight: 600; /* Hacerlo un poco más notorio */
+  font-size: 1rem;
+  color: var(--primary-color); /* Usar color primario para el nombre */
+}
+
+/* Botones de navegación */
+#testimonios .prev,
+#testimonios .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--testimonial-button-bg);
+  color: var(--dark-color); /* Color del texto/flecha */
+  border: none;
+  font-size: 1.5rem; /* Tamaño de la flecha */
+  width: 40px; /* Ancho del botón */
+  height: 40px; /* Alto del botón */
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Asegurar que estén sobre las tarjetas */
+  transition: background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#testimonios .prev:hover,
+#testimonios .next:hover {
+  background-color: #d4ac0d; /* Tono más oscuro del amarillo */
+  transform: translateY(-50%) scale(1.1); /* Efecto hover */
+}
+
+#testimonios .prev {
+  left: 10px;
+} /* Ajustar posición */
+#testimonios .next {
+  right: 10px;
+} /* Ajustar posición */
+
+/* ==========================================================================
+       7. FOOTER
+       ========================================================================== */
+/* ... (Código footer sin cambios) ... */
+
+/* ==========================================================================
+       8. DARK MODE
+       ========================================================================== */
+[data-theme="dark"] {
+  /* ... (Otras variables dark mode sin cambios) ... */
+  --testimonial-bg: #2c3e50; /* Fondo más oscuro para testimonios en dark mode */
+  --testimonial-title-color: #f1c40f; /* Mantener amarillo */
+  --testimonial-card-bg: #3a3a3a; /* Fondo tarjeta oscuro */
+  --testimonial-card-text: var(--light-color); /* Texto claro en tarjeta */
+  --testimonial-button-bg: #f1c40f; /* Mantener amarillo */
+
+  #testimonios .testimonio-card h4 {
+    color: var(
+      --secondary-color
+    ); /* Cambiar color del nombre en dark mode si se desea */
+  }
+}
+/* ... (Resto dark mode sin cambios) ... */
+
+/* ==========================================================================
+       9. RESPONSIVE DESIGN (Media Queries)
+       ========================================================================== */
+/* ... (Media queries existentes sin cambios) ... */
+
+/* Ajustes responsivos específicos para el nuevo carrusel si son necesarios */
+@media (max-width: 767.98px) {
+  #testimonios .carousel-container {
+    max-width: 90%; /* Permitir que ocupe más ancho en móviles */
+    /* padding: 0 30px; // Reducir padding para botones */
+  }
+
+  #testimonios .prev,
+  #testimonios .next {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  #testimonios .prev {
+    left: 5px;
+  }
+  #testimonios .next {
+    right: 5px;
+  }
+
+  #testimonios .testimonio-card p {
+    font-size: 0.95rem;
+  }
+  #testimonios .testimonio-card h4 {
+    font-size: 0.95rem;
+  }
+}

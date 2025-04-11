@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gimnasio FitnessPro - Inicio</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome para Iconos (Ejemplo) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Considera añadir Google Fonts aquí si las usas -->
+  </head>
+  <body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="Gimnasio FitnessPro Logo" />
+        </a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li class="has-megamenu">
+              <a href="#"
+                >Servicios <i class="fas fa-chevron-down fa-xs"></i
+              ></a>
+              <div class="mega-menu">
+                <div class="mega-menu-column">
+                  <h4><a href="clases.html">Clases</a></h4>
+                  <ul>
+                    <li><a href="clases.html#yoga">Yoga</a></li>
+                    <li><a href="clases.html#crossfit">CrossFit</a></li>
+                    <li><a href="clases.html#spinning">Spinning</a></li>
+                    <li><a href="clases.html#musculacion">Musculación</a></li>
+                    <li><a href="clases.html#funcional">Funcional</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-column">
+                  <h4><a href="entrenadores.html">Entrenadores</a></h4>
+                  <ul>
+                    <li><a href="entrenadores.html#juan">Juan Pérez</a></li>
+                    <li><a href="entrenadores.html#maria">María López</a></li>
+                  </ul>
+                </div>
+                <div class="mega-menu-column">
+                  <h4><a href="precios.html">Precios</a></h4>
+                  <ul>
+                    <li><a href="precios.html#mensual">Plan Mensual</a></li>
+                    <li><a href="precios.html#anual">Plan Anual</a></li>
+                    <li>
+                      <a href="precios.html#clase-suelta">Clase Suelta</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <button
+          id="theme-toggle-button"
+          class="theme-toggle"
+          aria-label="Cambiar tema claro/oscuro"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+      <!-- ==================== HERO SECTION ==================== -->
+      <section id="hero">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="images/hero-bg.jpg"
+          id="hero-video"
+        >
+          <source src="videos/video.mp4" type="video/mp4" />
+          Tu navegador no soporta la etiqueta de video. Considera usar la imagen
+          de fondo.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <h1 class="animate-text-pop">
+            Transforma Tu Cuerpo, Eleva Tu Espíritu
+          </h1>
+          <p class="animate-text-fade">
+            Únete a la comunidad FitnessPro y descubre tu mejor versión con
+            nuestras clases y entrenadores expertos.
+          </p>
+          <a
+            href="clases.html"
+            class="btn btn-primary btn-lg animate-button-scale"
+            >Explora Nuestras Clases</a
+          >
+        </div>
+        <a
+          href="#clases-destacadas"
+          class="scroll-down-indicator"
+          aria-label="Ir a la siguiente sección"
+        >
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </section>
+
+      <!-- ==================== CLASES DESTACADAS ==================== -->
+      <section id="clases-destacadas" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Clases Populares</h2>
+          <div class="cards-container">
+            <article class="card card-hover-effect">
+              <div class="card-image">
+                <img
+                  src="images/clase-crossfit.jpg"
+                  alt="Clase de CrossFit intensa"
+                />
+              </div>
+              <div class="card-content">
+                <h3>CrossFit Extremo</h3>
+                <p>
+                  Desafía tus límites con entrenamientos de alta intensidad.
+                </p>
+                <a href="clases.html#crossfit" class="btn btn-secondary"
+                  >Ver Detalles</a
+                >
+              </div>
+            </article>
+            <article class="card card-hover-effect">
+              <div class="card-image">
+                <img
+                  src="images/clase-yoga.jpg"
+                  alt="Clase de Yoga relajante"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Yoga & Mindfulness</h3>
+                <p>Conecta cuerpo y mente para encontrar equilibrio y paz.</p>
+                <a href="clases.html#yoga" class="btn btn-secondary"
+                  >Ver Detalles</a
+                >
+              </div>
+            </article>
+            <article class="card card-hover-effect">
+              <div class="card-image">
+                <img
+                  src="images/clase-spinning.jpg"
+                  alt="Clase de Spinning energética"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Spinning Rítmico</h3>
+                <p>
+                  Pedalea al ritmo de la música y quema calorías divirtiéndote.
+                </p>
+                <a href="clases.html#spinning" class="btn btn-secondary"
+                  >Ver Detalles</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTADOR ANIMADO ==================== -->
+      <section id="contador" class="section-padding bg-primary text-light">
+        <div class="container counter-container">
+          <div class="counter-item">
+            <span class="numero" data-target="500">0</span>+
+            <p>Socios Satisfechos</p>
+          </div>
+          <div class="counter-item">
+            <span class="numero" data-target="35">0</span>+
+            <p>Clases Semanales</p>
+          </div>
+          <div class="counter-item">
+            <span class="numero" data-target="12">0</span>+
+            <p>Entrenadores Certificados</p>
+          </div>
+          <div class="counter-item">
+            <span class="numero" data-target="8">0</span>+
+            <p>Años de Experiencia</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== NUEVO CARRUSEL DE TESTIMONIOS ==================== -->
+      <section id="testimonios" class="section-padding">
+        <!-- Mantenemos ID y padding -->
+        <div class="container">
+          <!-- Añadimos el contenedor general para consistencia -->
+          <h2 class="section-title">Testimonios</h2>
+          <!-- Usamos la clase estándar para títulos -->
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <!-- Tarjeta 1 -->
+              <div class="testimonio-card">
+                <p>
+                  "¡Este gimnasio me ha cambiado la vida! Estoy más fuerte y más
+                  sano que nunca."
+                </p>
+                <h4>- Javier Mendez</h4>
+              </div>
+              <!-- Tarjeta 2 -->
+              <div class="testimonio-card">
+                <p>
+                  "Los entrenadores son excelentes y el ambiente es súper
+                  motivador."
+                </p>
+                <h4>- Laura Gómez</h4>
+              </div>
+              <!-- Tarjeta 3 -->
+              <div class="testimonio-card">
+                <p>"Cada clase me deja con energía para todo el día."</p>
+                <h4>- Tomás Ruiz</h4>
+              </div>
+              <!-- Puedes añadir más tarjetas aquí -->
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== FIN NUEVO CARRUSEL DE TESTIMONIOS ==================== -->
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-dark text-light section-padding">
+      <!-- ... (contenido del footer sin cambios) ... -->
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h4>Mantente Informado</h4>
+          <p>
+            Suscríbete a nuestro newsletter para recibir ofertas y novedades.
+          </p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input
+              type="email"
+              name="email"
+              placeholder="tu.email@ejemplo.com"
+              required
+              aria-label="Correo electrónico para newsletter"
+            />
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+          </form>
+        </div>
+        <div class="footer-col">
+          <h4>Enlaces Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="clases.html">Nuestras Clases</a></li>
+            <li><a href="entrenadores.html">Equipo de Entrenadores</a></li>
+            <li><a href="precios.html">Planes y Precios</a></li>
+            <li><a href="blog.html">Blog de Fitness</a></li>
+            <li><a href="contacto.html">Contacto y Ubicación</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <ul class="social-links">
+            <li>
+              <a href="#" target="_blank" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col footer-map">
+          <h4>Encuéntranos</h4>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.13117188898!2d-65.309588824683!3d-24.7914999780889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc2b8b4b8a555%3A0x45b69e4499913d4c!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1715105888888!5m2!1ses-419!2sar"
+              width="100%"
+              height="200"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de ubicación del Gimnasio FitnessPro"
+            >
+            </iframe>
+          </div>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, San
+            Salvador de Jujuy
+          </p>
+          <p><i class="fas fa-phone"></i> (388) 456-7890</p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p>&copy; 2025 Gimnasio FitnessPro. Todos los derechos reservados.</p>
+        <p>Desarrollado como práctica para APU - FI UNJu.</p>
+      </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT EMBEBIDO ==================== -->
+    <script>
+      // ==========================================================
+      // FUNCIONALIDAD NUEVO CARRUSEL TESTIMONIOS (BOTONES)
+      // ==========================================================
+      const testimonioSlide = document.querySelector(
+        "#testimonios .carousel-slide"
+      ); // Selector más específico
+      const testimonioCards = document.querySelectorAll(
+        "#testimonios .testimonio-card"
+      ); // Selector más específico
+      const prevBtnTestimonio = document.querySelector("#testimonios .prev"); // Selector más específico
+      const nextBtnTestimonio = document.querySelector("#testimonios .next"); // Selector más específico
+
+      if (
+        testimonioSlide &&
+        testimonioCards.length > 0 &&
+        prevBtnTestimonio &&
+        nextBtnTestimonio
+      ) {
+        let currentIndexTestimonio = 0;
+        const gap = 30; // Debe coincidir con el 'gap' en CSS
+        let cardWidthTestimonio = testimonioCards[0].offsetWidth + gap; // Ancho tarjeta + gap
+
+        // Función para actualizar el ancho en caso de redimensionamiento
+        const updateCardWidth = () => {
+          // Puede ser necesario recalcular si el ancho de la tarjeta cambia significativamente
+          // Por simplicidad, lo recalculamos aquí, pero podría optimizarse
+          cardWidthTestimonio = testimonioCards[0].offsetWidth + gap;
+          // Reajustar la posición actual
+          testimonioSlide.style.transition = "none"; // Evitar transición durante el ajuste
+          testimonioSlide.style.transform = `translateX(-${
+            cardWidthTestimonio * currentIndexTestimonio
+          }px)`;
+          // Forzar reflow para aplicar el cambio sin transición
+          void testimonioSlide.offsetWidth;
+          testimonioSlide.style.transition = "transform 1.2s ease-in-out"; // Restaurar transición
+        };
+
+        // Actualizar al cargar y al redimensionar
+        window.addEventListener("load", updateCardWidth);
+        window.addEventListener("resize", updateCardWidth);
+
+        nextBtnTestimonio.addEventListener("click", () => {
+          // Muestra hasta 3 tarjetas, así que el límite es cards.length - 1 si solo muestra 1,
+          // o cards.length - num_visibles si muestra más de 1.
+          // Asumiendo que el diseño muestra 1 tarjeta a la vez debido a min-width: 100%
+          if (currentIndexTestimonio < testimonioCards.length - 1) {
+            currentIndexTestimonio++;
+            testimonioSlide.style.transform = `translateX(-${
+              cardWidthTestimonio * currentIndexTestimonio
+            }px)`;
+          } else {
+            // Opcional: Volver al inicio
+            // currentIndexTestimonio = 0;
+            // testimonioSlide.style.transform = `translateX(0px)`;
+          }
+        });
+
+        prevBtnTestimonio.addEventListener("click", () => {
+          if (currentIndexTestimonio > 0) {
+            currentIndexTestimonio--;
+            testimonioSlide.style.transform = `translateX(-${
+              cardWidthTestimonio * currentIndexTestimonio
+            }px)`;
+          } else {
+            // Opcional: Ir al final
+            // currentIndexTestimonio = testimonioCards.length - 1;
+            // testimonioSlide.style.transform = `translateX(-${cardWidthTestimonio * currentIndexTestimonio}px)`;
+          }
+        });
+      } else {
+        console.warn(
+          "Elementos del nuevo carrusel de testimonios no encontrados."
+        );
+      }
+      // --- Fin Funcionalidad Nuevo Carrusel Testimonios ---
+
+      // ==========================================================
+      // FUNCIONALIDAD CONTADOR ANIMADO (Se mantiene igual)
+      // ==========================================================
+      const counters = document.querySelectorAll(".numero");
+      const speed = 200;
+
+      const animateCounter = (counter) => {
+        const target = +counter.getAttribute("data-target");
+        const count = +counter.innerText;
+        const inc = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(() => animateCounter(counter), 1);
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      const observerOptions = { root: null, threshold: 0.3 };
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            animateCounter(counter);
+            observer.unobserve(counter);
+          }
+        });
+      }, observerOptions);
+
+      counters.forEach((counter) => {
+        counter.innerText = "0";
+        counterObserver.observe(counter);
+      });
+      // --- Fin Funcionalidad Contador Animado ---
+
+      // ==========================================================
+      // FUNCIONALIDAD DARK MODE TOGGLE (Se mantiene igual)
+      // ==========================================================
+      const themeToggle = document.getElementById("theme-toggle-button");
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme) {
+        document.documentElement.setAttribute("data-theme", currentTheme);
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          let theme = document.documentElement.getAttribute("data-theme");
+          if (theme === "dark") {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.removeItem("theme");
+          } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      } else {
+        console.warn("Botón de cambio de tema no encontrado.");
+      }
+      // --- Fin Funcionalidad Dark Mode Toggle ---
+
+      // ==========================================================
+      // FUNCIONALIDAD MENÚ MÓVIL HAMBURGUESA (Se mantiene igual)
+      // ==========================================================
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const mainNav = document.querySelector(".main-nav");
+
+      if (mobileMenuToggle && mainNav) {
+        mobileMenuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+          const isExpanded = mainNav.classList.contains("active");
+          mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
+          const icon = mobileMenuToggle.querySelector("i");
+          if (isExpanded) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+            mobileMenuToggle.setAttribute("aria-label", "Cerrar menú");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+            mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
+          }
+        });
+      } else {
+        console.warn("Elementos del menú móvil no encontrados.");
+      }
+      // --- Fin Funcionalidad Menú Móvil ---
+    </script>
+    <!-- Fin del Script Embebido -->
+  </body>
+  <audio id="miAudio" autoplay>
+    <source src="aura.mp3" type="audio/mpeg" />
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  <style>
+    /* Oculta el reproductor de audio */
+    audio {
+      display: none;
+    }
+  </style>
+  <script>
+    // Esta función inicia la reproducción automática
+    window.onload = function () {
+      const audio = document.getElementById("miAudio");
+      audio.muted = true; // Silencia el audio para permitir la reproducción automática en algunos navegadores.
+      audio.play().then(() => {
+        audio.muted = false; // Desmutea el audio después de que comienza a reproducirse.
+      });
+    };
+  </script>
+</html>

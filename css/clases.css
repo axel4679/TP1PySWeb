@@ -1,0 +1,334 @@
+/* ==========================================================================
+   CLASES PAGE SPECIFIC STYLES (clases.css)
+   ========================================================================== */
+
+/* Inherits base styles, variables, .container, .section-padding, .section-title,
+   .cards-container grid, .card base, header, footer, dark mode variables from style.css */
+
+/* ==========================================================================
+   CSS Only Filters
+   ========================================================================== */
+
+.filtros-clases {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.filtros-clases h2 {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-unit);
+  color: var(--secondary-color);
+}
+
+/* Hide the actual radio buttons */
+.filtros-clases input[type="radio"] {
+  display: none;
+}
+
+/* Style the labels to look like buttons/tabs */
+.filtros-clases label {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  margin: 0 calc(var(--spacing-unit) * 0.3) calc(var(--spacing-unit) * 0.5);
+  background-color: var(--light-color);
+  color: var(--grey-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Style for the selected filter label */
+.filtros-clases input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filtros-clases label:hover {
+  background-color: var(--grey-color);
+  color: var(--white-color);
+}
+
+.filtros-clases input[type="radio"]:checked + label:hover {
+  background-color: #c0392b; /* Darker primary on hover */
+}
+
+/* Filter Logic: Hide all cards initially within the gallery */
+/* Make sure the gallery section has the ID or class used below */
+#clases-page .galeria-clases > .card {
+  display: none; /* Hide all cards by default */
+  animation: fadeInCard 0.5s ease forwards; /* Add fade-in effect */
+}
+
+/* Show ALL cards when 'Todos' is checked */
+#filtro-todos:checked ~ .galeria-clases > .card {
+  display: flex; /* Or 'block'/'grid' depending on card structure */
+}
+
+/* Show specific category cards when their filter is checked */
+#filtro-yoga:checked ~ .galeria-clases > .card.yoga,
+#filtro-crossfit:checked ~ .galeria-clases > .card.crossfit,
+#filtro-spinning:checked ~ .galeria-clases > .card.spinning,
+#filtro-musculacion:checked ~ .galeria-clases > .card.musculacion,
+#filtro-funcional:checked ~ .galeria-clases > .card.funcional {
+  display: flex; /* Or 'block'/'grid' */
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+     Gallery Grid (Masonry-like) & Card Effects
+     ========================================================================== */
+
+.galeria-clases {
+  /* Uses .cards-container styles from style.css for the grid */
+  /* display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: ...; */
+  align-items: start; /* Align items to the top for a more masonry feel */
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+/* Card Zoom/Overlay Effect */
+.galeria-clases .card .card-image {
+  position: relative; /* Needed for overlay positioning */
+  overflow: hidden; /* Keep zoom effect contained */
+}
+
+.galeria-clases .card .card-image img {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth zoom */
+}
+
+.galeria-clases .card .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* Allow clicks on card content below */
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.galeria-clases .card:hover .card-image img {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+.galeria-clases .card:hover .card-overlay {
+  opacity: 1; /* Show overlay */
+}
+
+/* ==========================================================================
+     Responsive Schedule Table
+     ========================================================================== */
+
+.horarios-semanales {
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.horarios-semanales h2 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  font-size: 1.8rem;
+}
+
+.tabla-responsive-container {
+  overflow-x: auto; /* Enable horizontal scroll on small screens if needed */
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.horarios-semanales table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: var(--white-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Clip shadow */
+}
+
+.horarios-semanales th,
+.horarios-semanales td {
+  padding: calc(var(--spacing-unit) * 0.8);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
+}
+
+.horarios-semanales thead th {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.horarios-semanales tbody tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+.horarios-semanales tbody tr:hover {
+  background-color: #ddd; /* Hover effect for rows */
+}
+
+.horarios-semanales td[data-label="Hora"] {
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+/* Responsive Table Styles (Mobile) */
+@media (max-width: 767.98px) {
+  .horarios-semanales thead {
+    display: none; /* Hide table headers */
+  }
+
+  .horarios-semanales table,
+  .horarios-semanales tbody,
+  .horarios-semanales tr,
+  .horarios-semanales td {
+    display: block; /* Make table elements stack vertically */
+    width: 100% !important; /* Force full width */
+  }
+
+  .horarios-semanales tr {
+    margin-bottom: var(--spacing-unit);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+  }
+
+  .horarios-semanales td {
+    text-align: right; /* Align cell content to the right */
+    padding-left: 50%; /* Make space for the label */
+    position: relative;
+    border: none; /* Remove individual cell borders */
+    border-bottom: 1px dashed var(--border-color); /* Add separator */
+  }
+
+  .horarios-semanales td:last-child {
+    border-bottom: none; /* Remove separator for last cell in a block */
+  }
+
+  /* Add the header label using ::before */
+  .horarios-semanales td::before {
+    content: attr(data-label); /* Get content from data-label attribute */
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px); /* Adjust width */
+    padding-right: 10px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary-color); /* Highlight the label */
+  }
+
+  .horarios-semanales td[data-label="Hora"] {
+    background-color: var(--primary-color); /* Make time stand out */
+    color: var(--white-color);
+    font-size: 1.1rem;
+    text-align: center;
+    padding-left: 0; /* Reset padding */
+  }
+  .horarios-semanales td[data-label="Hora"]::before {
+    display: none; /* Hide label for time cell */
+  }
+}
+
+/* ==========================================================================
+     Dark Mode Specific Overrides for Clases Page
+     ========================================================================== */
+
+[data-theme="dark"] .filtros-clases {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .filtros-clases label {
+  background-color: #3a3a3a;
+  color: var(--grey-color);
+  border-color: #555;
+}
+
+[data-theme="dark"] .filtros-clases input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .filtros-clases label:hover {
+  background-color: #555;
+  color: var(--white-color);
+}
+
+[data-theme="dark"] .filtros-clases input[type="radio"]:checked + label:hover {
+  background-color: #c0392b; /* Darker primary */
+}
+
+[data-theme="dark"] .galeria-clases .card .card-overlay {
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly darker overlay */
+}
+
+[data-theme="dark"] .horarios-semanales table {
+  background-color: var(--card-bg-color); /* Dark background for table */
+  border-color: #444;
+}
+
+[data-theme="dark"] .horarios-semanales th,
+[data-theme="dark"] .horarios-semanales td {
+  border-color: #444;
+}
+
+[data-theme="dark"] .horarios-semanales thead th {
+  background-color: var(--primary-color); /* Keep header color */
+}
+
+[data-theme="dark"] .horarios-semanales tbody tr:nth-child(even) {
+  background-color: #2c2c2c; /* Slightly different dark for even rows */
+}
+
+[data-theme="dark"] .horarios-semanales tbody tr:hover {
+  background-color: #4a4a4a; /* Darker hover */
+}
+
+[data-theme="dark"] .horarios-semanales td[data-label="Hora"] {
+  background-color: var(--secondary-color); /* Keep secondary color */
+}
+
+/* Responsive dark mode table */
+@media (max-width: 767.98px) {
+  [data-theme="dark"] .horarios-semanales tr {
+    border-color: #444;
+  }
+  [data-theme="dark"] .horarios-semanales td {
+    border-bottom-color: #444;
+  }
+  [data-theme="dark"] .horarios-semanales td::before {
+    color: var(--primary-color); /* Keep label color */
+  }
+  [data-theme="dark"] .horarios-semanales td[data-label="Hora"] {
+    background-color: var(--primary-color); /* Keep time color */
+  }
+}
