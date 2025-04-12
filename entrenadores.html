@@ -16,43 +16,43 @@
 </head>
 
 <body>
-  <!-- ==================== HEADER (Identical to index.html) ==================== -->
+  <!-- ==================== HEADER ==================== -->
   <header>
     <div class="container header-container">
       <a href="index.html" class="logo">
-        <img src="imagenes/logo.jpg" alt=" Gimnasio FitnessPro Logo" />
+        <img src="imagenes/logo.jpg" alt="Gimnasio FitnessPro Logo" />
+        <span class="logo-text">Gym FitnessPro</span>
       </a>
       <nav class="main-nav">
         <ul>
           <li><a href="index.html">Inicio</a></li>
-          <!-- REMOVED active class -->
           <li class="has-megamenu">
-            <a href="#" class="active" <!-- ADDED active class to parent -->
-              >Servicios <i class="fas fa-chevron-down fa-xs"></i></a>
+            <a href="#" class="active">Servicios <i class="fas fa-chevron-down fa-xs"></i></a>
             <div class="mega-menu">
               <div class="mega-menu-column">
                 <h4><a href="clases.html">Clases</a></h4>
                 <ul>
                   <li><a href="clases.html#yoga">Yoga</a></li>
                   <li><a href="clases.html#crossfit">CrossFit</a></li>
-                  <!-- ... -->
+                  <li><a href="clases.html#spinning">Spinning</a></li>
+                  <li><a href="clases.html#musculacion">Musculación</a></li>
+                  <li><a href="clases.html#funcional">Funcional</a></li>
                 </ul>
               </div>
               <div class="mega-menu-column">
-                <h4>
-                  <a href="entrenadores.html" class="active">Entrenadores</a>
-                </h4>
-                <!-- ADDED active class -->
+                <h4><a href="entrenadores.html" class="active">Entrenadores</a></h4>
                 <ul>
-                  <li><a href="entrenadores.html#juan">Juan Pérez</a></li>
+                  <li><a href="entrenadores.html#juan">Geronimo Arias</a></li>
                   <li><a href="entrenadores.html#maria">María López</a></li>
+                  <li><a href="entrenadores.html#carlos">Tito Calderon</a></li> <!-- Nombre Corregido -->
                 </ul>
               </div>
               <div class="mega-menu-column">
                 <h4><a href="precios.html">Precios</a></h4>
                 <ul>
-                  <li><a href="precios.html#mensual">Plan Mensual</a></li>
-                  <!-- ... -->
+                  <li><a href="precios.html#plan-basico">Plan Básico</a></li>
+                  <li><a href="precios.html#plan-plus">Plan Plus</a></li>
+                  <li><a href="precios.html#plan-premium">Plan Premium</a></li>
                 </ul>
               </div>
             </div>
@@ -80,19 +80,21 @@
         </p>
 
         <div class="entrenadores-container cards-container">
-          <!-- Tarjeta Entrenador 1 (Flip Card) -->
-          <div class="entrenador-card">
+
+          <!-- Tarjeta Entrenador 1 (Geronimo Arias) -->
+          <div id="juan" class="entrenador-card">
             <div class="card-inner">
               <!-- Cara Frontal -->
-              <div class="card-front">
-                <img src="images/entrenador1.jpg" alt="Entrenador Juan Pérez" class="entrenador-avatar" />
-                <h3>Juan Pérez</h3>
-                <p>Especialista en CrossFit</p>
-                <span class="flip-indicator">Ver más <i class="fas fa-redo-alt fa-xs"></i></span>
+              <div class="card-front" style="background-image: url('imagenes/gero.jpg');">
+                <div class="card-front-content">
+                  <h3>Geronimo Arias</h3>
+                  <p>Especialista en CrossFit</p>
+                  <span class="flip-indicator">Ver más <i class="fas fa-redo-alt fa-xs"></i></span>
+                </div>
               </div>
               <!-- Cara Trasera -->
               <div class="card-back">
-                <h4>Juan Pérez</h4>
+                <h4>Geronimo Arias</h4>
                 <p>
                   5 años de experiencia. Certificado Nivel 2 CrossFit.
                   Apasionado por el entrenamiento funcional.
@@ -112,12 +114,10 @@
                     </div>
                   </div>
                 </div>
-                <!-- Rating Estrellas INTERACTIVO -->
                 <div class="rating-section">
-                  <h5>Valora a Juan</h5>
-                  <!-- Cambiado el título -->
+                  <h5>Valora a Geronimo</h5>
                   <div class="rating-stars-interactive">
-                    <!-- Inputs ocultos (orden 5 a 1 para facilitar CSS con ~) -->
+                    <!-- ****** CORREGIR/VERIFICAR ESTOS IDs y FORs ****** -->
                     <input type="radio" id="star5-juan" name="rating-juan" value="5" /><label for="star5-juan"
                       title="5 estrellas"><i class="fas fa-star"></i></label>
                     <input type="radio" id="star4-juan" name="rating-juan" value="4" /><label for="star4-juan"
@@ -128,23 +128,26 @@
                       title="2 estrellas"><i class="fas fa-star"></i></label>
                     <input type="radio" id="star1-juan" name="rating-juan" value="1" /><label for="star1-juan"
                       title="1 estrella"><i class="fas fa-star"></i></label>
+                    <!-- ************************************************ -->
                   </div>
                 </div>
-                <!-- Fin Rating Estrellas INTERACTIVO -->
               </div>
             </div>
           </div>
           <!-- Fin Tarjeta Entrenador 1 -->
 
-          <!-- Tarjeta Entrenador 2 (Flip Card) -->
-          <div class="entrenador-card">
+          <!-- Tarjeta Entrenador 2 (María López) -->
+          <div id="maria" class="entrenador-card">
             <div class="card-inner">
-              <div class="card-front">
-                <img src="images/entrenador2.jpg" alt="Entrenadora María López" class="entrenador-avatar" />
-                <h3>María López</h3>
-                <p>Instructora de Yoga y Pilates</p>
-                <span class="flip-indicator">Ver más <i class="fas fa-redo-alt fa-xs"></i></span>
+              <!-- Cara Frontal -->
+              <div class="card-front" style="background-image: url('imagenes/ema.jpg');">
+                <div class="card-front-content">
+                  <h3>María López</h3>
+                  <p>Instructora de Yoga y Pilates</p>
+                  <span class="flip-indicator">Ver más <i class="fas fa-redo-alt fa-xs"></i></span>
+                </div>
               </div>
+              <!-- Cara Trasera -->
               <div class="card-back">
                 <h4>María López</h4>
                 <p>
@@ -156,20 +159,20 @@
                   <div class="skill">
                     <span class="skill-name">Flexibilidad</span>
                     <div class="skill-bar">
-                      <div class="skill-level" style="--level: 95%"></div>
+                      <div class="skill-level" style="--level: 70%"></div>
                     </div>
                   </div>
                   <div class="skill">
                     <span class="skill-name">Mindfulness</span>
                     <div class="skill-bar">
-                      <div class="skill-level" style="--level: 90%"></div>
+                      <div class="skill-level" style="--level: 70%"></div>
                     </div>
                   </div>
                 </div>
-                <!-- Rating Estrellas INTERACTIVO -->
                 <div class="rating-section">
                   <h5>Valora a María</h5>
                   <div class="rating-stars-interactive">
+                    <!-- ****** CORREGIR/VERIFICAR ESTOS IDs y FORs ****** -->
                     <input type="radio" id="star5-maria" name="rating-maria" value="5" /><label for="star5-maria"
                       title="5 estrellas"><i class="fas fa-star"></i></label>
                     <input type="radio" id="star4-maria" name="rating-maria" value="4" /><label for="star4-maria"
@@ -180,19 +183,74 @@
                       title="2 estrellas"><i class="fas fa-star"></i></label>
                     <input type="radio" id="star1-maria" name="rating-maria" value="1" /><label for="star1-maria"
                       title="1 estrella"><i class="fas fa-star"></i></label>
+                    <!-- ************************************************ -->
                   </div>
                 </div>
-                <!-- Fin Rating Estrellas INTERACTIVO -->
               </div>
             </div>
           </div>
           <!-- Fin Tarjeta Entrenador 2 -->
+
+          <!-- Tarjeta Entrenador 3 (Tito Calderon) -->
+          <div id="carlos" class="entrenador-card"> <!-- ID para enlace -->
+            <div class="card-inner">
+              <!-- Cara Frontal -->
+              <div class="card-front" style="background-image: url('imagenes/entrenador3.jpg');">
+                <div class="card-front-content">
+                  <h3>Tito Calderon</h3>
+                  <p>Entrenador de Musculación</p>
+                  <span class="flip-indicator">Ver más <i class="fas fa-redo-alt fa-xs"></i></span>
+                </div>
+              </div>
+              <!-- Cara Trasera -->
+              <div class="card-back">
+                <h4>Tito Calderon</h4>
+                <p>
+                  Especialista en musculación y acondicionamiento físico. Más de 8 años ayudando a transformar
+                  físicos.
+                </p>
+                <div class="skills-section">
+                  <h5>Habilidades</h5>
+                  <div class="skill">
+                    <span class="skill-name">Musculación</span>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="--level: 92%"></div>
+                    </div>
+                  </div>
+                  <div class="skill">
+                    <span class="skill-name">Nutrición Deportiva</span>
+                    <div class="skill-bar">
+                      <div class="skill-level" style="--level: 50%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rating-section">
+                  <h5>Valora a Tito</h5>
+                  <div class="rating-stars-interactive">
+                    <!-- IDs, names y fors ÚNICOS para Carlos/Tito -->
+                    <input type="radio" id="star5-carlos" name="rating-carlos" value="5" /><label for="star5-carlos"
+                      title="5 estrellas"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star4-carlos" name="rating-carlos" value="4" /><label for="star4-carlos"
+                      title="4 estrellas"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star3-carlos" name="rating-carlos" value="3" /><label for="star3-carlos"
+                      title="3 estrellas"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star2-carlos" name="rating-carlos" value="2" /><label for="star2-carlos"
+                      title="2 estrellas"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star1-carlos" name="rating-carlos" value="1" /><label for="star1-carlos"
+                      title="1 estrella"><i class="fas fa-star"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin Tarjeta Entrenador 3 -->
+
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ==================== FOOTER (Identical to index.html) ==================== -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="bg-dark text-light section-padding">
     <!-- ... (contenido del footer idéntico) ... -->
     <div class="container footer-grid">
@@ -257,136 +315,35 @@
     </div>
   </footer>
 
-  <!-- ==================== JAVASCRIPT EMBEBIDO (CORREGIDO) ==================== -->
+  <!-- ==================== JAVASCRIPT EMBEBIDO (Sin cambios lógicos necesarios aquí) ==================== -->
   <script>
     // ==========================================================
-    // FUNCIONALIDAD NUEVO CARRUSEL TESTIMONIOS (BOTONES) - Solo funcionará en index.html
+    // FUNCIONALIDAD DARK MODE TOGGLE (Necesario en todas las páginas)
     // ==========================================================
-    const testimonioSlide = document.querySelector(
-      "#testimonios .carousel-slide"
-    );
-    const testimonioCards = document.querySelectorAll(
-      "#testimonios .testimonio-card"
-    );
-    const prevBtnTestimonio = document.querySelector("#testimonios .prev");
-    const nextBtnTestimonio = document.querySelector("#testimonios .next");
+    const themeToggle = document.getElementById("theme-toggle-button");
+    const currentTheme = localStorage.getItem("theme");
 
-    // Solo ejecutar si estamos en index.html (o donde esté el carrusel)
-    if (
-      testimonioSlide &&
-      testimonioCards.length > 0 &&
-      prevBtnTestimonio &&
-      nextBtnTestimonio
-    ) {
-      let currentIndexTestimonio = 0;
-      const gap = 30; // Asegúrate que coincida con tu CSS si lo cambiaste
-      let cardWidthTestimonio = testimonioCards[0].offsetWidth + gap;
-
-      const updateCardWidth = () => {
-        cardWidthTestimonio = testimonioCards[0].offsetWidth + gap;
-        testimonioSlide.style.transition = "none";
-        testimonioSlide.style.transform = `translateX(-${cardWidthTestimonio * currentIndexTestimonio
-          }px)`;
-        void testimonioSlide.offsetWidth;
-        testimonioSlide.style.transition = "transform 0.5s ease-in-out"; // Restaurar transición (ajusta si es necesario)
-      };
-
-      window.addEventListener("load", updateCardWidth);
-      window.addEventListener("resize", updateCardWidth);
-
-      nextBtnTestimonio.addEventListener("click", () => {
-        if (currentIndexTestimonio < testimonioCards.length - 1) {
-          currentIndexTestimonio++;
-          testimonioSlide.style.transform = `translateX(-${cardWidthTestimonio * currentIndexTestimonio
-            }px)`;
-        }
-      });
-
-      prevBtnTestimonio.addEventListener("click", () => {
-        if (currentIndexTestimonio > 0) {
-          currentIndexTestimonio--;
-          testimonioSlide.style.transform = `translateX(-${cardWidthTestimonio * currentIndexTestimonio
-            }px)`;
-        }
-      });
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (themeToggle) themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        if (themeToggle) themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+      }
     }
-    // --- Fin Funcionalidad Nuevo Carrusel Testimonios ---
+    applyTheme(currentTheme);
 
-    // ==========================================================
-    // FUNCIONALIDAD CONTADOR ANIMADO - Solo funcionará en index.html
-    // ==========================================================
-    const counters = document.querySelectorAll(".numero");
-    // Solo ejecutar si estamos en index.html (o donde esté el contador)
-    if (counters.length > 0) {
-      const speed = 200;
-      const animateCounter = (counter) => {
-        const target = +counter.getAttribute("data-target");
-        const count = +counter.innerText;
-        const inc = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + inc);
-          setTimeout(() => animateCounter(counter), 1);
-        } else {
-          counter.innerText = target;
-        }
-      };
-
-      const observerOptions = { root: null, threshold: 0.3 };
-      const counterObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const counter = entry.target;
-              animateCounter(counter);
-              observer.unobserve(counter);
-            }
-          });
-        },
-        observerOptions
-      );
-
-      counters.forEach((counter) => {
-        counter.innerText = "0";
-        counterObserver.observe(counter);
-      });
-    }
-    // --- Fin Funcionalidad Contador Animado ---
-
-    // ==========================================================
-    // FUNCIONALIDAD DARK MODE TOGGLE (CÓDIGO COMPLETO)
-    // ==========================================================
-    const themeToggle = document.getElementById("theme-toggle-button"); // Busca el botón
-    const currentTheme = localStorage.getItem("theme"); // Lee el tema guardado
-
-    // Aplica el tema guardado al cargar la página
-    if (currentTheme) {
-      document.documentElement.setAttribute("data-theme", currentTheme);
-    }
-
-    // Añade el listener SOLO si el botón existe en la página
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
-        // Obtiene el estado ACTUAL del tema en el HTML
         let theme = document.documentElement.getAttribute("data-theme");
-        // Si está en 'dark', cámbialo a claro (quitando el atributo)
         if (theme === "dark") {
-          document.documentElement.removeAttribute("data-theme");
-          localStorage.removeItem("theme"); // Borra la preferencia guardada
+          localStorage.removeItem("theme");
+          applyTheme(null);
         } else {
-          // Si NO está en 'dark', cámbialo a oscuro (añadiendo el atributo)
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark"); // Guarda la preferencia
+          localStorage.setItem("theme", "dark");
+          applyTheme("dark");
         }
-        // Opcional: Cambiar el icono del botón (luna/sol) aquí si lo deseas
-        // const icon = themeToggle.querySelector('i');
-        // if (document.documentElement.getAttribute("data-theme") === 'dark') {
-        //     icon.classList.remove('fa-moon');
-        //     icon.classList.add('fa-sun');
-        // } else {
-        //     icon.classList.remove('fa-sun');
-        //     icon.classList.add('fa-moon');
-        // }
       });
     }
     // --- Fin Funcionalidad Dark Mode Toggle ---
@@ -396,20 +353,29 @@
     // ==========================================================
     const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
     const mainNav = document.querySelector(".main-nav");
-
-    // Añade el listener SOLO si ambos elementos existen
     if (mobileMenuToggle && mainNav) {
       mobileMenuToggle.addEventListener("click", () => {
-        mainNav.classList.toggle("active"); // Necesitarás CSS para .main-nav.active
+        mainNav.classList.toggle("active");
         const isExpanded = mainNav.classList.contains("active");
         mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
-        // Cambiar icono (opcional)
         const icon = mobileMenuToggle.querySelector("i");
         if (isExpanded) {
           icon.classList.remove("fa-bars");
-          icon.classList.add("fa-times"); // Icono de 'X'
+          icon.classList.add("fa-times");
           mobileMenuToggle.setAttribute("aria-label", "Cerrar menú");
         } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+          mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
+        }
+      });
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = mainNav.contains(event.target);
+        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          const icon = mobileMenuToggle.querySelector("i");
           icon.classList.remove("fa-times");
           icon.classList.add("fa-bars");
           mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
@@ -419,12 +385,11 @@
     // --- Fin Funcionalidad Menú Móvil ---
 
     // ==========================================================
-    // AÑADE AQUÍ CUALQUIER OTRO JS ESPECÍFICO DE LA PÁGINA
-    // Por ejemplo, el JS del formulario de contacto iría aquí en contacto.html
-    // El JS del scroll reveal iría aquí en blog.html
+    // JS Específico de Entrenadores (Si hubiera, iría aquí)
+    // Por ahora, el flip y las animaciones son solo CSS
     // ==========================================================
+
   </script>
-  <!-- Fin del Script Embebido -->
 </body>
 
 </html>

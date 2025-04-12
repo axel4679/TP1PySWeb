@@ -1,12 +1,74 @@
 /* ==========================================================================
    1. BASE STYLES, VARIABLES & UTILITIES
    ========================================================================== */
+/* ==========================================================================
+   Header Styling (Añadir o modificar dentro de esta sección)
+   ========================================================================== */
+
+/* ... otros estilos del header ... */
+
+.logo {
+  display: flex; /* Coloca la imagen y el texto en una fila */
+  align-items: center; /* Centra verticalmente la imagen y el texto */
+  gap: 12px; /* Espacio entre la imagen y el texto (ajusta según necesites) */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: var(--text-color); /* Hereda el color de texto o usa uno específico */
+  transition: opacity var(--transition-speed) ease; /* Transición suave para hover */
+}
+
+.logo img {
+  height: 45px; /* Ajusta la altura del logo como desees */
+  width: auto; /* Mantiene la proporción */
+  display: block; /* Buena práctica para imágenes */
+  /* La transición se puede aplicar aquí o en .logo */
+}
+
+.logo .logo-text {
+  font-size: 1.4rem; /* Ajusta el tamaño del texto */
+  font-weight: 700; /* Texto en negrita */
+  /* Opcional: Puedes darle un color específico */
+  /* color: var(--primary-color); */
+  /* Opcional: Ocultar en pantallas muy pequeñas si no cabe */
+  /* @media (max-width: 480px) { display: none; } */
+}
+
+/* Efecto hover opcional para todo el bloque del logo */
+.logo:hover {
+  opacity: 0.85; /* Ligeramente transparente al pasar el cursor */
+}
+
+/* Opcional: Si quieres que solo el texto cambie de color al hacer hover */
+/* .logo:hover .logo-text {
+  color: var(--primary-color);
+} */
+
+/* Asegúrate de que el color del texto se adapte al modo oscuro */
+/* Si usaste 'color: var(--text-color)' arriba, debería funcionar. */
+/* Si no, añade una regla específica: */
+[data-theme='dark'] .logo {
+  color: var(--light-color); /* O el color de texto claro que uses */
+}
+/* [data-theme="dark"] .logo:hover {
+    opacity: 0.9;
+} */
+
+/* ... resto de estilos del header ... */
 
 /* Reset básico y Modelo de Cajas */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+/* Dentro de style.css, en la sección del Header */
+
+.logo img {
+  height: 45px; /* O la altura que prefieras */
+  width: 45px; /* ¡Importante! Establece el mismo ancho que la altura para formar un círculo */
+  border-radius: 50%; /* ¡Esto crea el círculo! */
+  object-fit: cover; /* Evita que la imagen se distorsione si no es cuadrada, la recorta para llenar el círculo */
+  display: block; /* Buena práctica para imágenes */
+  /* Otros estilos que ya tuvieras, como transiciones, pueden permanecer */
 }
 
 /* Variables CSS (Custom Properties) */
@@ -29,8 +91,8 @@
   --footer-text: var(--light-color);
   --border-color: #dddddd;
 
-  --font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  --font-family-headings: "Montserrat", sans-serif; /* Ejemplo, añadir import si es de Google Fonts */
+  --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-headings: 'Montserrat', sans-serif; /* Ejemplo, añadir import si es de Google Fonts */
 
   --base-font-size: 16px;
   --line-height-base: 1.6;
@@ -264,7 +326,7 @@ header {
 
 .main-nav a::after {
   /* Efecto subrayado sutil en hover/active */
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -728,9 +790,9 @@ header {
 }
 
 /* Estilo del punto activo */
-#tslide1:checked ~ .carousel-nav label[for="tslide1"],
-#tslide2:checked ~ .carousel-nav label[for="tslide2"],
-#tslide3:checked ~ .carousel-nav label[for="tslide3"] {
+#tslide1:checked ~ .carousel-nav label[for='tslide1'],
+#tslide2:checked ~ .carousel-nav label[for='tslide2'],
+#tslide3:checked ~ .carousel-nav label[for='tslide3'] {
   background-color: var(--primary-color);
 }
 
@@ -757,7 +819,7 @@ footer {
 }
 /* Línea decorativa bajo los títulos del footer */
 .footer-col h4::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -779,7 +841,7 @@ footer {
   flex-wrap: wrap; /* Permitir que el botón baje en pantallas pequeñas */
 }
 
-.newsletter-form input[type="email"] {
+.newsletter-form input[type='email'] {
   flex-grow: 1;
   padding: calc(var(--spacing-unit) * 0.6);
   border: 1px solid var(--grey-color);
@@ -788,7 +850,7 @@ footer {
   color: var(--light-color);
   min-width: 150px; /* Ancho mínimo antes de envolver */
 }
-.newsletter-form input[type="email"]::placeholder {
+.newsletter-form input[type='email']::placeholder {
   color: var(--grey-color);
   opacity: 0.8;
 }
@@ -872,7 +934,7 @@ footer {
      8. DARK MODE
      ========================================================================== */
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --background-color: #1a1a1a; /* Fondo muy oscuro */
   --text-color: var(--light-color);
   --card-bg-color: #2c2c2c; /* Gris oscuro para tarjetas */
@@ -900,11 +962,11 @@ footer {
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra clara sutil */
   }
 
-  .newsletter-form input[type="email"] {
+  .newsletter-form input[type='email'] {
     background-color: #3a3a3a;
     border-color: #555;
   }
-  .newsletter-form input[type="email"]::placeholder {
+  .newsletter-form input[type='email']::placeholder {
     color: #888;
   }
 
@@ -915,9 +977,9 @@ footer {
   .nav-dot {
     background-color: #555;
   }
-  #tslide1:checked ~ .carousel-nav label[for="tslide1"],
-  #tslide2:checked ~ .carousel-nav label[for="tslide2"],
-  #tslide3:checked ~ .carousel-nav label[for="tslide3"] {
+  #tslide1:checked ~ .carousel-nav label[for='tslide1'],
+  #tslide2:checked ~ .carousel-nav label[for='tslide2'],
+  #tslide3:checked ~ .carousel-nav label[for='tslide3'] {
     background-color: var(
       --primary-color
     ); /* Mantener color primario para activo */
@@ -925,14 +987,14 @@ footer {
 
   .theme-toggle i::before {
     /* Cambiar icono luna/sol */
-    content: "\f185"; /* Código FontAwesome para el sol */
+    content: '\f185'; /* Código FontAwesome para el sol */
   }
 }
 
 /* Estilo inicial del botón de tema (luna) */
 .theme-toggle i::before {
-  content: "\f186"; /* Código FontAwesome para la luna */
-  font-family: "Font Awesome 6 Free"; /* Asegurar la fuente */
+  content: '\f186'; /* Código FontAwesome para la luna */
+  font-family: 'Font Awesome 6 Free'; /* Asegurar la fuente */
   font-weight: 900; /* Usar fuente sólida */
 }
 
@@ -1040,7 +1102,7 @@ footer {
   .newsletter-form {
     justify-content: center;
   }
-  .newsletter-form input[type="email"] {
+  .newsletter-form input[type='email'] {
     border-radius: var(--border-radius); /* Redondear todo */
     margin-bottom: calc(var(--spacing-unit) * 0.5);
     text-align: center;
@@ -1231,7 +1293,7 @@ footer {
 /* ==========================================================================
        8. DARK MODE
        ========================================================================== */
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* ... (Otras variables dark mode sin cambios) ... */
   --testimonial-bg: #2c3e50; /* Fondo más oscuro para testimonios en dark mode */
   --testimonial-title-color: #f1c40f; /* Mantener amarillo */
