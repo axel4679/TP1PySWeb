@@ -1,558 +1,444 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gimnasio FitnessPro - Blog</title>
-    <!-- 1. Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- 2. Page-Specific Stylesheet -->
-    <link rel="stylesheet" href="css/blog.css" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!-- ==================== HEADER ==================== -->
-    <header>
-      <div class="container header-container">
-        <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="Gimnasio FitnessPro Logo" />
-        </a>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li class="has-megamenu">
-              <a href="#"
-                >Servicios <i class="fas fa-chevron-down fa-xs"></i
-              ></a>
-              <div class="mega-menu">
-                <div class="mega-menu-column">
-                  <h4><a href="clases.html">Clases</a></h4>
-                  <ul>
-                    <li><a href="clases.html#yoga">Yoga</a></li>
-                    <li><a href="clases.html#crossfit">CrossFit</a></li>
-                    <li><a href="clases.html#spinning">Spinning</a></li>
-                    <li><a href="clases.html#musculacion">Musculación</a></li>
-                    <li><a href="clases.html#funcional">Funcional</a></li>
-                  </ul>
-                </div>
-                <div class="mega-menu-column">
-                  <h4><a href="entrenadores.html">Entrenadores</a></h4>
-                  <ul>
-                    <li><a href="entrenadores.html#juan">Juan Pérez</a></li>
-                    <li><a href="entrenadores.html#maria">María López</a></li>
-                  </ul>
-                </div>
-                <div class="mega-menu-column">
-                  <h4><a href="precios.html">Precios</a></h4>
-                  <ul>
-                    <li><a href="precios.html#mensual">Plan Mensual</a></li>
-                    <li><a href="precios.html#anual">Plan Anual</a></li>
-                    <li>
-                      <a href="precios.html#clase-suelta">Clase Suelta</a>
-                    </li>
-                  </ul>
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gimnasio FitnessPro - Blog</title>
+  <!-- 1. Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- 2. Page-Specific Stylesheet -->
+  <link rel="stylesheet" href="css/blog.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <!-- Ruta corregida si es necesario, asumiendo 'imagenes' -->
+        <img src="imagenes/logo.jpg" alt=" Gimnasio FitnessPro Logo" />
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li class="has-megamenu">
+            <a href="#">Servicios <i class="fas fa-chevron-down fa-xs"></i></a>
+            <div class="mega-menu">
+              <div class="mega-menu-column">
+                <h4><a href="clases.html">Clases</a></h4>
+                <ul>
+                  <li><a href="clases.html#yoga">Yoga</a></li>
+                  <li><a href="clases.html#crossfit">CrossFit</a></li>
+                  <li><a href="clases.html#spinning">Spinning</a></li>
+                  <li><a href="clases.html#musculacion">Musculación</a></li>
+                  <li><a href="clases.html#funcional">Funcional</a></li>
+                </ul>
               </div>
-            </li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-          </ul>
-        </nav>
-        <button
-          id="theme-toggle-button"
-          class="theme-toggle"
-          aria-label="Cambiar tema claro/oscuro"
-        >
-          <i class="fas fa-moon"></i>
-        </button>
-        <button
-          class="mobile-menu-toggle"
-          aria-label="Abrir menú"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </header>
+              <div class="mega-menu-column">
+                <h4><a href="entrenadores.html">Entrenadores</a></h4>
+                <ul>
+                  <li><a href="entrenadores.html#juan">Juan Pérez</a></li>
+                  <li><a href="entrenadores.html#maria">María López</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu-column">
+                <h4><a href="precios.html">Precios</a></h4>
+                <ul>
+                  <li><a href="precios.html#plan-basico">Plan Básico</a></li>
+                  <li><a href="precios.html#plan-plus">Plan Plus</a></li>
+                  <li><a href="precios.html#plan-premium">Plan Premium</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle-button" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
-    <!-- ==================== MAIN CONTENT - BLOG ==================== -->
-    <main>
-      <section id="blog-page" class="section-padding">
-        <div class="container">
-          <h1 class="section-title">Blog de Fitness</h1>
-          <p class="text-center lead mb-5">
-            Consejos, noticias y motivación para tu viaje fitness.
-          </p>
+  <!-- ==================== MAIN CONTENT - BLOG ==================== -->
+  <main>
+    <section id="blog-page" class="section-padding">
+      <div class="container">
+        <h1 class="section-title">Blog de Fitness</h1>
+        <p class="text-center lead mb-5">
+          Consejos, noticias y motivación para tu viaje fitness.
+        </p>
 
-          <!-- Filtros por Tags/Categorías (MODIFICADO PARA JS) -->
-          <aside class="filtros-blog">
-            <h2>Categorías</h2>
-            <!-- Quitado input radio, añadido data-filter y clase a label -->
-            <label class="filter-label active" data-filter="todos">Todos</label>
-            <label class="filter-label" data-filter="nutricion"
-              >Nutrición</label
-            >
-            <label class="filter-label" data-filter="entrenamiento"
-              >Entrenamiento</label
-            >
-            <label class="filter-label" data-filter="bienestar"
-              >Bienestar</label
-            >
-            <!-- Añadir más filtros con data-filter -->
-          </aside>
+        <!-- Filtros (Sin cambios) -->
+        <aside class="filtros-blog">
+          <h2>Categorías</h2>
+          <label class="filter-label active" data-filter="todos">Todos</label>
+          <label class="filter-label" data-filter="nutricion">Nutrición</label>
+          <label class="filter-label" data-filter="entrenamiento">Entrenamiento</label>
+          <label class="filter-label" data-filter="bienestar">Bienestar</label>
+        </aside>
 
-          <!-- Texto descriptivo del filtro (se muestra/oculta con JS) -->
-          <div class="filtro-descripcion">
-            <!-- Quitado desc-visible, JS lo manejará -->
-            <p id="desc-todos">Mostrando todos los artículos.</p>
-            <p id="desc-nutricion">Mostrando artículos sobre Nutrición.</p>
-            <p id="desc-entrenamiento">
-              Mostrando artículos sobre Entrenamiento.
-            </p>
-            <p id="desc-bienestar">Mostrando artículos sobre Bienestar.</p>
-            <!-- Añade más párrafos si agregas más filtros -->
+        <!-- Texto descriptivo del filtro (Sin cambios) -->
+        <div class="filtro-descripcion">
+          <p id="desc-todos" style="display: block;">Mostrando todos los artículos.</p>
+          <p id="desc-nutricion" style="display: none;">Mostrando artículos sobre Nutrición.</p>
+          <p id="desc-entrenamiento" style="display: none;">Mostrando artículos sobre Entrenamiento.</p>
+          <p id="desc-bienestar" style="display: none;">Mostrando artículos sobre Bienestar.</p>
+        </div>
+
+        <!-- Contenedor Principal del Blog -->
+        <div class="blog-grid">
+
+          <!-- Artículo 1 (Destacado) -->
+          <article class="blog-post post-destacado scroll-reveal nutricion">
+            <!-- Ruta corregida si es necesario -->
+            <img src="imagenes/comida_saludable.jpg" alt="Comida saludable" />
+            <div class="post-content">
+              <span class="post-category">Nutrición</span>
+              <h2><a href="blog-single.html">5 Mitos Comunes Sobre la Alimentación Post-Entrenamiento</a></h2>
+              <p class="post-excerpt">Descubre la verdad detrás de lo que debes comer después de ejercitarte...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Por Admin</span>
+                <span><i class="fas fa-calendar-alt"></i> Mayo 10, 2025</span>
+                <!-- Enlace de comentarios ELIMINADO -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Artículo 2 -->
+          <article class="blog-post scroll-reveal entrenamiento">
+            <!-- Ruta corregida si es necesario -->
+            <img src="imagenes/entrenamiento_fuerza.jpg" alt="Entrenamiento de fuerza" />
+            <div class="post-content">
+              <span class="post-category">Entrenamiento</span>
+              <h2><a href="blog-single.html">Guía para Principiantes: Cómo Empezar con el Levantamiento de Pesas</a>
+              </h2>
+              <p class="post-excerpt">Pierde el miedo a las pesas y aprende los fundamentos...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Por Juan Pérez</span>
+                <span><i class="fas fa-calendar-alt"></i> Mayo 05, 2025</span>
+                <!-- Enlace de comentarios ELIMINADO -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Artículo 3 -->
+          <article class="blog-post scroll-reveal bienestar">
+            <!-- Ruta corregida si es necesario -->
+            <img src="imagenes/yoga.jpg" alt="Meditación y yoga" />
+            <div class="post-content">
+              <span class="post-category">Bienestar</span>
+              <h2><a href="blog-single.html">La Importancia del Descanso y la Recuperación Muscular</a></h2>
+              <p class="post-excerpt">El entrenamiento es solo una parte. Aprende por qué el descanso es crucial...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Por María López</span>
+                <span><i class="fas fa-calendar-alt"></i> Abril 28, 2025</span>
+                <!-- Enlace de comentarios ELIMINADO -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Artículo 4 -->
+          <article class="blog-post scroll-reveal nutricion">
+            <!-- Ruta corregida si es necesario -->
+            <img src="imagenes/batidos.jpg" alt="Batido de proteinas" />
+            <div class="post-content">
+              <span class="post-category">Nutrición</span>
+              <h2><a href="blog-single.html">Receta: Batido Energético Pre-Entrenamiento</a></h2>
+              <p class="post-excerpt">Prepara este delicioso y nutritivo batido para darte el impulso...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Por Admin</span>
+                <span><i class="fas fa-calendar-alt"></i> Abril 20, 2025</span>
+                <!-- Enlace de comentarios ELIMINADO -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Artículo 5 -->
+          <article class="blog-post scroll-reveal entrenamiento">
+            <!-- Ruta corregida si es necesario -->
+            <img src="imagenes/corriendo.jpg" alt="Corriendo al aire libre" />
+            <div class="post-content">
+              <span class="post-category">Entrenamiento</span>
+              <h2><a href="blog-single.html">Beneficios de Correr al Aire Libre vs. Cinta</a></h2>
+              <p class="post-excerpt">Comparamos las ventajas y desventajas de cada modalidad...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Por Juan Pérez</span>
+                <span><i class="fas fa-calendar-alt"></i> Mayo 15, 2025</span>
+                <!-- Enlace de comentarios ELIMINADO -->
+              </div>
+            </div>
+          </article>
+
+          <!-- Artículos 6, 7 y 8 eliminados en el prompt anterior, si los necesitas, añádelos aquí siguiendo el mismo patrón -->
+
+        </div> <!-- Fin blog-grid -->
+
+        <!-- ==================== NUEVA SECCIÓN DE COMENTARIOS ==================== -->
+        <section class="comentarios-section">
+          <h3>Comentarios Recientes</h3>
+          <div class="lista-comentarios">
+
+            <!-- Comentario Positivo 1 -->
+            <article class="comentario">
+              <div class="comentario-avatar" data-initials="AR"></div>
+              <div class="comentario-body">
+                <span class="comentario-autor">Ana Rodríguez</span>
+                <span class="comentario-fecha">Hace 1 día</span>
+                <p>¡Me encantan los artículos de este blog! Siempre encuentro información útil y motivadora para seguir
+                  con mis entrenamientos. ¡Sigan así!</p>
+                <a href="#" class="responder-link">Responder</a>
+              </div>
+            </article>
+
+            <!-- Comentario Positivo 2 -->
+            <article class="comentario">
+              <div class="comentario-avatar" data-initials="MS"></div>
+              <div class="comentario-body">
+                <span class="comentario-autor">Marcos Silva</span>
+                <span class="comentario-fecha">Hace 3 días</span>
+                <p>La guía para principiantes de levantamiento de pesas fue justo lo que necesitaba. ¡Muy clara y
+                  práctica! Ya empecé a aplicarla en el gimnasio.</p>
+                <a href="#" class="responder-link">Responder</a>
+              </div>
+            </article>
+
+            <!-- Comentario Positivo 3 (con respuesta simulada) -->
+            <article class="comentario">
+              <div class="comentario-avatar" data-initials="VP"></div>
+              <div class="comentario-body">
+                <span class="comentario-autor">Valeria Ponce</span>
+                <span class="comentario-fecha">Hace 4 días</span>
+                <p>¡Qué buena la receta del batido pre-entrenamiento! Lo probé hoy y me dio muchísima energía.
+                  ¡Delicioso!</p>
+                <a href="#" class="responder-link">Responder</a>
+              </div>
+            </article>
+            <article class="comentario comentario-respuesta">
+              <div class="comentario-avatar" data-initials="AD"></div>
+              <div class="comentario-body">
+                <span class="comentario-autor">Admin</span>
+                <span class="comentario-fecha">Hace 4 días</span>
+                <p>¡Nos alegra que te haya gustado, Valeria! Es una excelente opción.</p>
+                <a href="#" class="responder-link">Responder</a>
+              </div>
+            </article>
+
           </div>
+          <!-- Aquí podrías añadir un formulario para dejar un comentario -->
+          <!-- <form id="comment-form"> ... </form> -->
+        </section>
+        <!-- ==================== FIN NUEVA SECCIÓN DE COMENTARIOS ==================== -->
 
-          <!-- Contenedor Principal del Blog (Newspaper Grid) -->
-          <div class="blog-grid">
-            <!-- Usar blog-grid -->
-
-            <!-- Artículo 1 (Destacado) -->
-            <article class="blog-post post-destacado scroll-reveal nutricion">
-              <img src="images/blog-post1.jpg" alt="Comida saludable" />
-              <div class="post-content">
-                <span class="post-category">Nutrición</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >5 Mitos Comunes Sobre la Alimentación Post-Entrenamiento</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Descubre la verdad detrás de lo que debes comer después de
-                  ejercitarte para optimizar tu recuperación...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Admin</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 10, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 3 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 2 -->
-            <article class="blog-post scroll-reveal entrenamiento">
-              <img src="images/blog-post2.jpg" alt="Entrenamiento de fuerza" />
-              <div class="post-content">
-                <span class="post-category">Entrenamiento</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >Guía para Principiantes: Cómo Empezar con el Levantamiento
-                    de Pesas</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Pierde el miedo a las pesas y aprende los fundamentos para
-                  construir fuerza de forma segura...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Juan Pérez</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 05, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 5 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 3 -->
-            <article class="blog-post scroll-reveal bienestar">
-              <img src="images/blog-post3.jpg" alt="Meditación y yoga" />
-              <div class="post-content">
-                <span class="post-category">Bienestar</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >La Importancia del Descanso y la Recuperación Muscular</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  El entrenamiento es solo una parte. Aprende por qué el
-                  descanso es crucial para ver resultados...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por María López</span>
-                  <span
-                    ><i class="fas fa-calendar-alt"></i> Abril 28, 2025</span
-                  >
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 2 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 4 -->
-            <article class="blog-post scroll-reveal nutricion">
-              <img src="images/blog-post4.jpg" alt="Batido de proteinas" />
-              <div class="post-content">
-                <span class="post-category">Nutrición</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >Receta: Batido Energético Pre-Entrenamiento</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Prepara este delicioso y nutritivo batido para darte el
-                  impulso que necesitas antes de ir al gym...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Admin</span>
-                  <span
-                    ><i class="fas fa-calendar-alt"></i> Abril 20, 2025</span
-                  >
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 8 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 5 -->
-            <article class="blog-post scroll-reveal entrenamiento">
-              <img src="images/blog-post5.jpg" alt="Corriendo al aire libre" />
-              <div class="post-content">
-                <span class="post-category">Entrenamiento</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >Beneficios de Correr al Aire Libre vs. Cinta</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Comparamos las ventajas y desventajas de cada modalidad para
-                  que elijas la mejor para ti...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Juan Pérez</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 15, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 1 Comentario</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 6 -->
-            <article class="blog-post scroll-reveal bienestar">
-              <img src="images/blog-post6.jpg" alt="Persona durmiendo bien" />
-              <div class="post-content">
-                <span class="post-category">Bienestar</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >7 Consejos para Mejorar la Calidad de tu Sueño</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Dormir bien es fundamental para tu salud y rendimiento. Aplica
-                  estos tips...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por María López</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 18, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 4 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 7 -->
-            <article class="blog-post scroll-reveal nutricion">
-              <img src="images/blog-post7.jpg" alt="Ensalada colorida" />
-              <div class="post-content">
-                <span class="post-category">Nutrición</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >Ideas de Ensaladas Completas y Nutritivas</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  Deja atrás las ensaladas aburridas con estas propuestas llenas
-                  de sabor y nutrientes...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Admin</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 22, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 6 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-            <!-- Artículo 8 -->
-            <article class="blog-post scroll-reveal entrenamiento">
-              <img
-                src="images/blog-post8.jpg"
-                alt="Persona haciendo estiramientos"
-              />
-              <div class="post-content">
-                <span class="post-category">Entrenamiento</span>
-                <h2>
-                  <a href="blog-single.html"
-                    >La Importancia del Calentamiento y Enfriamiento</a
-                  >
-                </h2>
-                <p class="post-excerpt">
-                  No te saltes estas partes cruciales de tu rutina. Previene
-                  lesiones y mejora tu flexibilidad...
-                </p>
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> Por Juan Pérez</span>
-                  <span><i class="fas fa-calendar-alt"></i> Mayo 25, 2025</span>
-                  <a href="blog-single.html#comentarios"
-                    ><i class="fas fa-comments"></i> 0 Comentarios</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-          <!-- Fin blog-grid -->
-
-          <!-- Paginación ELIMINADA -->
-
-          <!-- Sección de Comentarios Estilizada (Ejemplo - Comentada) -->
-          <!-- ... (sección de comentarios sin cambios) ... -->
-        </div>
-      </section>
-    </main>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-dark text-light section-padding">
-      <!-- ... (Contenido del footer sin cambios) ... -->
-      <div class="container footer-grid">
-        <div class="footer-col">
-          <h4>Mantente Informado</h4>
-          <p>
-            Suscríbete a nuestro newsletter para recibir ofertas y novedades.
-          </p>
-          <form id="newsletter-form" class="newsletter-form">
-            <input
-              type="email"
-              name="email"
-              placeholder="tu.email@ejemplo.com"
-              required
-              aria-label="Correo electrónico para newsletter"
-            />
-            <button type="submit" class="btn btn-primary">Suscribirse</button>
-          </form>
-        </div>
-        <div class="footer-col">
-          <h4>Enlaces Rápidos</h4>
-          <ul class="footer-links">
-            <li><a href="clases.html">Nuestras Clases</a></li>
-            <li><a href="entrenadores.html">Equipo de Entrenadores</a></li>
-            <li><a href="precios.html">Planes y Precios</a></li>
-            <li><a href="blog.html">Blog de Fitness</a></li>
-            <li><a href="contacto.html">Contacto y Ubicación</a></li>
-            <li><a href="#">Política de Privacidad</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Síguenos</h4>
-          <ul class="social-links">
-            <li>
-              <a href="#" target="_blank" aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#" target="_blank" aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#" target="_blank" aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#" target="_blank" aria-label="YouTube"
-                ><i class="fab fa-youtube"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-col footer-map">
-          <h4>Encuéntranos</h4>
-          <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.13117188898!2d-65.309588824683!3d-24.7914999780889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc2b8b4b8a555%3A0x45b69e4499913d4c!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1715105888888!5m2!1ses-419!2sar"
-              width="100%"
-              height="200"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de ubicación del Gimnasio FitnessPro"
-            >
-            </iframe>
-          </div>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, San
-            Salvador de Jujuy
-          </p>
-          <p><i class="fas fa-phone"></i> (388) 456-7890</p>
-        </div>
       </div>
-      <div class="footer-bottom text-center">
-        <p>&copy; 2025 Gimnasio FitnessPro. Todos los derechos reservados.</p>
-        <p>Desarrollado como práctica para APU - FI UNJu.</p>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-dark text-light section-padding">
+    <!-- ... (Contenido del footer sin cambios) ... -->
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Mantente Informado</h4>
+        <p>
+          Suscríbete a nuestro newsletter para recibir ofertas y novedades.
+        </p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" name="email" placeholder="tu.email@ejemplo.com" required
+            aria-label="Correo electrónico para newsletter" />
+          <button type="submit" class="btn btn-primary">Suscribirse</button>
+        </form>
       </div>
-    </footer>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="clases.html">Nuestras Clases</a></li>
+          <li><a href="entrenadores.html">Equipo de Entrenadores</a></li>
+          <li><a href="precios.html">Planes y Precios</a></li>
+          <li><a href="blog.html">Blog de Fitness</a></li>
+          <li><a href="contacto.html">Contacto y Ubicación</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <ul class="social-links">
+          <li>
+            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col footer-map">
+        <h4>Encuéntranos</h4>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.13117188898!2d-65.309588824683!3d-24.7914999780889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc2b8b4b8a555%3A0x45b69e4499913d4c!2sFacultad%20de%20Ingenier%C3%ADa%20-%20UNJu!5e0!3m2!1ses-419!2sar!4v1715105888888!5m2!1ses-419!2sar"
+            width="100%" height="200" style="border: 0" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación del Gimnasio FitnessPro">
+          </iframe>
+        </div>
+        <p>
+          <i class="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, San
+          Salvador de Jujuy
+        </p>
+        <p><i class="fas fa-phone"></i> (388) 456-7890</p>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2025 Gimnasio FitnessPro. Todos los derechos reservados.</p>
+      <p>Desarrollado como práctica para APU - FI UNJu.</p>
+    </div>
+  </footer>
 
-    <!-- ==================== JAVASCRIPT EMBEBIDO ==================== -->
-    <script>
-      // JS Carrusel Testimonios (Solo funcionará en index.html)
-      /* ... */
+  <!-- ==================== JAVASCRIPT EMBEBIDO (Sin cambios lógicos necesarios aquí) ==================== -->
+  <script>
+    // ==========================================================
+    // FUNCIONALIDAD DARK MODE TOGGLE (Necesario en todas las páginas)
+    // ==========================================================
+    const themeToggle = document.getElementById("theme-toggle-button");
+    const currentTheme = localStorage.getItem("theme");
 
-      // JS Contador Animado (Solo funcionará en index.html)
-      /* ... */
-
-      // ==========================================================
-      // FUNCIONALIDAD DARK MODE TOGGLE (CÓDIGO COMPLETO)
-      // ==========================================================
-      const themeToggle = document.getElementById("theme-toggle-button");
-      const currentTheme = localStorage.getItem("theme");
-      if (currentTheme) {
-        document.documentElement.setAttribute("data-theme", currentTheme);
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (themeToggle) themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        if (themeToggle) themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
       }
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          let theme = document.documentElement.getAttribute("data-theme");
-          if (theme === "dark") {
-            document.documentElement.removeAttribute("data-theme");
-            localStorage.removeItem("theme");
-          } else {
-            document.documentElement.setAttribute("data-theme", "dark");
-            localStorage.setItem("theme", "dark");
-          }
-        });
-      }
-      // --- Fin Funcionalidad Dark Mode Toggle ---
+    }
+    applyTheme(currentTheme);
 
-      // ==========================================================
-      // FUNCIONALIDAD MENÚ MÓVIL HAMBURGUESA (Necesario en todas las páginas)
-      // ==========================================================
-      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-      const mainNav = document.querySelector(".main-nav");
-      if (mobileMenuToggle && mainNav) {
-        mobileMenuToggle.addEventListener("click", () => {
-          mainNav.classList.toggle("active");
-          const isExpanded = mainNav.classList.contains("active");
-          mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        let theme = document.documentElement.getAttribute("data-theme");
+        if (theme === "dark") {
+          localStorage.removeItem("theme");
+          applyTheme(null);
+        } else {
+          localStorage.setItem("theme", "dark");
+          applyTheme("dark");
+        }
+      });
+    }
+    // --- Fin Funcionalidad Dark Mode Toggle ---
+
+    // ==========================================================
+    // FUNCIONALIDAD MENÚ MÓVIL HAMBURGUESA (Necesario en todas las páginas)
+    // ==========================================================
+    const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+    const mainNav = document.querySelector(".main-nav");
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("active");
+        const isExpanded = mainNav.classList.contains("active");
+        mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
+        const icon = mobileMenuToggle.querySelector("i");
+        if (isExpanded) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+          mobileMenuToggle.setAttribute("aria-label", "Cerrar menú");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+          mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
+        }
+      });
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = mainNav.contains(event.target);
+        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
           const icon = mobileMenuToggle.querySelector("i");
-          if (isExpanded) {
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-times");
-            mobileMenuToggle.setAttribute("aria-label", "Cerrar menú");
-          } else {
-            icon.classList.remove("fa-times");
-            icon.classList.add("fa-bars");
-            mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
-          }
-        });
-      }
-      // --- Fin Funcionalidad Menú Móvil ---
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+          mobileMenuToggle.setAttribute("aria-label", "Abrir menú");
+        }
+      });
+    }
+    // --- Fin Funcionalidad Menú Móvil ---
 
-      // ==========================================================
-      // JS PARA SCROLL REVEAL (Específico de esta página)
-      // ==========================================================
-      const revealElements = document.querySelectorAll(".scroll-reveal");
-      if (revealElements.length > 0) {
-        const revealObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add(
-                  "visible"
-                ); /* observer.unobserve(entry.target); */
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
-        revealElements.forEach((el) => {
-          revealObserver.observe(el);
-        });
-      }
-      // --- Fin JS Scroll Reveal ---
-
-      // ==========================================================
-      // JS PARA FILTRADO DEL BLOG (NUEVO)
-      // ==========================================================
-      const filterContainer = document.querySelector(".filtros-blog");
-      const filterLabels = document.querySelectorAll(
-        ".filtros-blog .filter-label"
-      );
-      const blogPosts = document.querySelectorAll(".blog-grid .blog-post");
-      const descriptionParagraphs = document.querySelectorAll(
-        ".filtro-descripcion p"
-      );
-
-      if (filterContainer && filterLabels.length > 0 && blogPosts.length > 0) {
-        // Función para mostrar la descripción correcta
-        function updateDescription(filter) {
-          descriptionParagraphs.forEach((p) => {
-            if (p.id === `desc-${filter}`) {
-              p.style.display = "block";
-            } else {
-              p.style.display = "none";
+    // ==========================================================
+    // JS PARA SCROLL REVEAL (Específico de esta página)
+    // ==========================================================
+    const revealElements = document.querySelectorAll(".scroll-reveal");
+    if (revealElements.length > 0) {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              // observer.unobserve(entry.target); // Descomentar para animar solo una vez
             }
+          });
+        },
+        { threshold: 0.1 } // Umbral ajustado
+      );
+      revealElements.forEach((el) => {
+        revealObserver.observe(el);
+      });
+    }
+    // --- Fin JS Scroll Reveal ---
+
+    // ==========================================================
+    // JS PARA FILTRADO DEL BLOG (Específico de esta página)
+    // ==========================================================
+    const filterContainer = document.querySelector(".filtros-blog");
+    const filterLabels = document.querySelectorAll(".filtros-blog .filter-label");
+    const blogPosts = document.querySelectorAll(".blog-grid .blog-post");
+    const descriptionParagraphs = document.querySelectorAll(".filtro-descripcion p");
+
+    if (filterContainer && filterLabels.length > 0 && blogPosts.length > 0) {
+
+      function updateDescription(filter) {
+        if (descriptionParagraphs.length > 0) {
+          descriptionParagraphs.forEach((p) => {
+            p.style.display = (p.id === `desc-${filter}`) ? "block" : "none";
           });
         }
-
-        // Mostrar descripción inicial ("todos")
-        updateDescription("todos");
-
-        filterContainer.addEventListener("click", (event) => {
-          // Solo actuar si se hizo clic en una etiqueta de filtro
-          if (!event.target.classList.contains("filter-label")) {
-            return;
-          }
-
-          const clickedLabel = event.target;
-          const targetFilter = clickedLabel.dataset.filter; // Obtener 'todos', 'nutricion', etc.
-
-          // 1. Actualizar estado activo de las etiquetas
-          filterLabels.forEach((label) => {
-            label.classList.remove("active");
-          });
-          clickedLabel.classList.add("active");
-
-          // 2. Filtrar los posts
-          blogPosts.forEach((post) => {
-            const postCategories = post.classList; // Obtener todas las clases del post
-
-            if (
-              targetFilter === "todos" ||
-              postCategories.contains(targetFilter)
-            ) {
-              post.style.display = "flex"; // Mostrar post
-              // Opcional: Re-aplicar animación si se desea al filtrar
-              // post.style.animation = 'none';
-              // void post.offsetWidth; // Trigger reflow
-              // post.style.animation = '';
-            } else {
-              post.style.display = "none"; // Ocultar post
-            }
-          });
-
-          // 3. Actualizar texto descriptivo
-          updateDescription(targetFilter);
-        });
       }
-      // --- Fin JS Filtrado Blog ---
-    </script>
-  </body>
+      updateDescription("todos"); // Mostrar descripción inicial
+
+      filterContainer.addEventListener("click", (event) => {
+        if (!event.target.classList.contains("filter-label")) return;
+
+        const clickedLabel = event.target;
+        const targetFilter = clickedLabel.dataset.filter;
+
+        filterLabels.forEach(label => label.classList.remove("active"));
+        clickedLabel.classList.add("active");
+
+        blogPosts.forEach((post) => {
+          const postCategories = post.classList;
+          const shouldShow = (targetFilter === "todos" || postCategories.contains(targetFilter));
+          // Usar display flex/none directamente
+          post.style.display = shouldShow ? 'flex' : 'none';
+        });
+
+        updateDescription(targetFilter); // Actualizar descripción
+      });
+    }
+    // --- Fin JS Filtrado Blog ---
+  </script>
+</body>
+
 </html>
