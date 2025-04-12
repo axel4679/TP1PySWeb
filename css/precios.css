@@ -1,0 +1,449 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS PÁGINA PRECIOS (precios.css)
+   ========================================================================== */
+
+/* Hereda estilos base, variables, .container, .section-padding, .section-title,
+   .card-hover-effect, header, footer, dark mode variables de style.css */
+
+/* ==========================================================================
+   Layout General y Texto Introductorio
+   ========================================================================== */
+
+   #precios-page .lead {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  /* ==========================================================================
+       Toggle Mensual/Anual
+       ========================================================================== */
+  
+  .plan-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 3); /* Aumentado margen inferior */
+  }
+  
+  .plan-label {
+    font-weight: 600;
+    color: var(--grey-color);
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+    user-select: none; /* Evita seleccionar texto al hacer clic rápido */
+  }
+  
+  /* Estilo del label activo (basado en la clase .vista-anual del padre) */
+  #precios-page:not(.vista-anual) .plan-toggle-container .plan-label:first-of-type,
+  #precios-page.vista-anual .plan-toggle-container .plan-label:last-of-type {
+    color: var(--text-color); /* Color más oscuro/claro para el label activo */
+  }
+  
+  /* Estilo del switch (tomado de ejemplos comunes) */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    flex-shrink: 0; /* Evita que se encoja */
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--grey-color); /* Color apagado por defecto */
+    transition: var(--transition-speed);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: var(--transition-speed);
+  }
+  
+  input:checked + .slider {
+    background-color: var(--primary-color); /* Color activo */
+  }
+  
+  input:focus-visible + .slider { /* Estilo de foco visible */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  /* ==========================================================================
+       Contenedor y Tarjetas de Precios
+       ========================================================================== */
+  
+  .precios-container {
+    display: grid;
+    /* 3 columnas en escritorio, se ajusta automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 1.8);
+    align-items: stretch; /* Las tarjetas intentan tener la misma altura */
+  }
+  
+  .plan-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing-unit) * 1.8);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border: 2px solid transparent; /* Borde inicial para transición suave */
+    transition: transform var(--transition-speed) ease,
+      box-shadow var(--transition-speed) ease,
+      border-color var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column; /* Contenido en columna */
+    position: relative; /* Para el badge */
+  }
+  
+  /* Efecto Hover de Resaltado */
+  .plan-card:hover {
+    transform: translateY(-8px); /* Levanta la tarjeta */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    border-color: var(--secondary-color); /* Resalta borde en hover */
+  }
+  
+  /* Plan Destacado */
+  .plan-destacado {
+    border-color: var(--primary-color); /* Borde destacado por defecto */
+    /* Opcional: Hacerlo ligeramente más grande */
+    /* transform: scale(1.03); */
+    z-index: 10; /* Asegura que esté por encima si hay solapamiento */
+  }
+  .plan-destacado:hover {
+    transform: translateY(-10px); /* Efecto hover un poco más pronunciado */
+    border-color: var(--primary-color); /* Mantiene borde primario */
+  }
+  
+  .destacado-badge {
+    position: absolute;
+    top: -15px; /* Sobresale un poco */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Contenido de la Tarjeta */
+  .plan-card h3 {
+    margin-bottom: var(--spacing-unit);
+    font-size: 1.5rem; /* Tamaño título plan */
+    color: var(--secondary-color); /* Color título plan */
+  }
+  
+  .precio {
+    font-size: 2.8rem; /* Tamaño del precio */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    line-height: 1.1;
+  }
+  
+  .precio .periodo {
+    display: block; /* /mes o /año debajo */
+    font-size: 1rem; /* Tamaño del periodo */
+    font-weight: 400;
+    color: var(--grey-color);
+    margin-top: 5px;
+  }
+  
+  /* Lógica de Toggle de Precios (Controlado por clase .vista-anual en #precios-page) */
+  .precio .precio-anual {
+    display: none; /* Oculto por defecto */
+  }
+  .precio .precio-mensual {
+    display: block; /* Visible por defecto (block para que .periodo quede abajo) */
+  }
+  
+  #precios-page.vista-anual .precio .precio-mensual {
+    display: none; /* Ocultar mensual */
+  }
+  #precios-page.vista-anual .precio .precio-anual {
+    display: block; /* Mostrar anual */
+  }
+  
+  /* Lista de Características */
+  .caracteristicas {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto calc(var(--spacing-unit) * 1.8); /* Margen inferior aumentado */
+    text-align: left;
+    max-width: 260px; /* Ancho máximo lista */
+    flex-grow: 1; /* Empuja el botón hacia abajo */
+  }
+  
+  .caracteristicas li {
+    margin-bottom: calc(var(--spacing-unit) * 0.8); /* Espacio entre items */
+    display: flex;
+    align-items: flex-start;
+    gap: calc(var(--spacing-unit) * 0.7);
+    font-size: 1rem; /* Tamaño texto características */
+    line-height: 1.5;
+  }
+  
+  .caracteristicas i {
+    margin-top: 4px; /* Ajuste vertical icono */
+    width: 18px; /* Ancho fijo para alinear */
+    text-align: center;
+    flex-shrink: 0; /* Evita que el icono se encoja */
+  }
+  
+  .caracteristicas .fa-check {
+    color: var(--success-color);
+  }
+  
+  .caracteristicas .fa-times {
+    color: var(--grey-color);
+    opacity: 0.7;
+  }
+  
+  /* Botón */
+  .plan-card .btn {
+    margin-top: auto; /* Empuja el botón al final */
+    width: 85%; /* Ancho del botón */
+    margin-left: auto;
+    margin-right: auto;
+    padding: calc(var(--spacing-unit) * 0.7) 0; /* Ajuste padding botón */
+  }
+  
+  /* ==========================================================================
+       Tooltips CSS
+       ========================================================================== */
+  
+  .tooltip-icon {
+    display: inline-flex; /* Para alinear verticalmente el contenido */
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    cursor: help;
+    color: var(--secondary-color);
+    font-weight: bold;
+    position: relative;
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 20px; /* Tamaño icono tooltip */
+    height: 20px;
+    font-size: 0.85rem;
+    vertical-align: middle; /* Alinea con el texto */
+  }
+  
+  /* Estilo del tooltip (pseudo-elemento ::before para el texto) */
+  .tooltip-icon::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px); /* Posición encima + espacio */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem; /* Tamaño texto tooltip */
+    font-weight: 400; /* Peso normal */
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease,
+      visibility var(--transition-speed) ease;
+    z-index: 20;
+    pointer-events: none;
+  }
+  
+  /* Estilo de la flecha del tooltip (pseudo-elemento ::after) */
+  .tooltip-icon::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 5px); /* Posición entre icono y texto */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark-color) transparent transparent transparent; /* Flecha */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease,
+      visibility var(--transition-speed) ease;
+    z-index: 20;
+    pointer-events: none;
+  }
+  
+  /* Mostrar tooltip al hacer hover o focus sobre el icono */
+  .tooltip-icon:hover::before,
+  .tooltip-icon:hover::after,
+  .tooltip-icon:focus-visible::before, /* Mostrar en foco */
+  .tooltip-icon:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* Añadir tabindex para que sea focuseable */
+  .tooltip-icon {
+      tabindex="0"; /* Permite foco con teclado */
+  }
+  
+  
+  /* ==========================================================================
+         Overrides Específicos Modo Oscuro para Página Precios
+         ========================================================================== */
+  
+  [data-theme='dark'] .plan-label {
+    color: var(--grey-color);
+  }
+  
+  [data-theme='dark'] #precios-page:not(.vista-anual) .plan-toggle-container .plan-label:first-of-type,
+  [data-theme='dark'] #precios-page.vista-anual .plan-toggle-container .plan-label:last-of-type {
+    color: var(--light-color); /* Texto activo más claro */
+  }
+  
+  [data-theme='dark'] .switch .slider {
+    background-color: #555;
+  }
+  
+  [data-theme='dark'] .plan-card {
+    background-color: var(--card-bg-color);
+    border-color: transparent;
+  }
+  
+  [data-theme='dark'] .plan-card:hover {
+    border-color: var(--secondary-color);
+  }
+  
+  [data-theme='dark'] .plan-destacado {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+  }
+  [data-theme='dark'] .plan-destacado:hover {
+    border-color: var(--primary-color);
+  }
+  
+  [data-theme='dark'] .precio {
+    color: var(--primary-color);
+  }
+  
+  [data-theme='dark'] .precio .periodo {
+    color: var(--grey-color);
+  }
+  
+  [data-theme='dark'] .caracteristicas li {
+    color: var(--light-color);
+  }
+  
+  [data-theme='dark'] .caracteristicas .fa-check {
+    color: var(--success-color);
+  }
+  
+  [data-theme='dark'] .caracteristicas .fa-times {
+    color: var(--grey-color);
+    opacity: 0.6;
+  }
+  
+  [data-theme='dark'] .tooltip-icon {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  /* Tooltip en modo oscuro: fondo claro, texto oscuro */
+  [data-theme='dark'] .tooltip-icon::before {
+    background-color: #e0e0e0;
+    color: #222;
+  }
+  
+  [data-theme='dark'] .tooltip-icon::after {
+    border-top-color: #e0e0e0;
+  }
+  
+  /* ==========================================================================
+         Ajustes Responsivos para Página Precios
+         ========================================================================== */
+  
+  @media (max-width: 991.98px) {
+      /* En tablets, 2 columnas pueden verse bien si hay espacio */
+       .precios-container {
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+       }
+  }
+  
+  
+  @media (max-width: 767.98px) {
+    .precios-container {
+      grid-template-columns: 1fr; /* Una columna en móvil */
+      gap: calc(var(--spacing-unit) * 2.5); /* Más espacio vertical */
+    }
+  
+    .plan-card {
+      padding: calc(var(--spacing-unit) * 1.5);
+    }
+  
+    .plan-destacado {
+      /* Quitar escalado por defecto en móvil si se aplicó */
+      /* transform: scale(1); */
+    }
+    .plan-destacado:hover {
+      transform: translateY(-5px); /* Reduce efecto hover */
+    }
+  
+    .precio {
+      font-size: 2.4rem; /* Precio un poco más pequeño */
+    }
+  
+    .plan-card .btn {
+      width: 90%;
+    }
+  
+    .plan-toggle-container {
+      /* Apilar en móvil si se prefiere */
+      /* flex-direction: column;
+      gap: calc(var(--spacing-unit) * 0.8); */
+    }
+  }
+  
+  @media (max-width: 480px) {
+      .plan-toggle-container {
+          /* Forzar apilado en pantallas muy pequeñas */
+          flex-direction: column;
+          gap: calc(var(--spacing-unit) * 0.8);
+      }
+       .precio {
+          font-size: 2.2rem;
+      }
+       .caracteristicas li {
+          font-size: 0.95rem;
+      }
+  }
+  

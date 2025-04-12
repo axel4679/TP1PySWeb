@@ -6,11 +6,11 @@
    .cards-container grid, .card base, header, footer, dark mode variables from style.css */
 
 /* ==========================================================================
-   CSS Only Filters
+   Filtros (Adaptado para JS con Labels)
    ========================================================================== */
 
 .filtros-clases {
-  margin-bottom: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 1); /* Reducido margen inferior */
   padding-bottom: var(--spacing-unit);
   border-bottom: 1px solid var(--border-color);
   text-align: center;
@@ -22,20 +22,16 @@
   color: var(--secondary-color);
 }
 
-/* Hide the actual radio buttons */
-.filtros-clases input[type="radio"] {
-  display: none;
-}
-
-/* Style the labels to look like buttons/tabs */
-.filtros-clases label {
+/* Estilo de los labels (botones de filtro) */
+.filtros-clases .filter-label {
+  /* Usamos la clase .filter-label */
   display: inline-block;
   padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
   margin: 0 calc(var(--spacing-unit) * 0.3) calc(var(--spacing-unit) * 0.5);
   background-color: var(--light-color);
   color: var(--grey-color);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius); /* Usa la variable global de style.css */
   cursor: pointer;
   transition: background-color var(--transition-speed) ease,
     color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
@@ -43,122 +39,156 @@
   font-weight: 500;
 }
 
-/* Style for the selected filter label */
-.filtros-clases input[type="radio"]:checked + label {
+/* Estilo para el label activo (añadido por JS) */
+.filtros-clases .filter-label.active {
+  /* Usamos la clase .active */
   background-color: var(--primary-color);
   color: var(--white-color);
   border-color: var(--primary-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.filtros-clases label:hover {
+.filtros-clases .filter-label:hover {
   background-color: var(--grey-color);
   color: var(--white-color);
 }
 
-.filtros-clases input[type="radio"]:checked + label:hover {
+.filtros-clases .filter-label.active:hover {
   background-color: #c0392b; /* Darker primary on hover */
 }
 
-/* Filter Logic: Hide all cards initially within the gallery */
-/* Make sure the gallery section has the ID or class used below */
-#clases-page .galeria-clases > .card {
-  display: none; /* Hide all cards by default */
-  animation: fadeInCard 0.5s ease forwards; /* Add fade-in effect */
+/* ==========================================================================
+         Texto Descriptivo del Filtro (NUEVO)
+         ========================================================================== */
+.filtro-descripcion {
+  text-align: center;
+  margin-top: calc(var(--spacing-unit) * 0.5);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  min-height: 1.6em; /* Evita saltos de layout */
 }
-
-/* Show ALL cards when 'Todos' is checked */
-#filtro-todos:checked ~ .galeria-clases > .card {
-  display: flex; /* Or 'block'/'grid' depending on card structure */
-}
-
-/* Show specific category cards when their filter is checked */
-#filtro-yoga:checked ~ .galeria-clases > .card.yoga,
-#filtro-crossfit:checked ~ .galeria-clases > .card.crossfit,
-#filtro-spinning:checked ~ .galeria-clases > .card.spinning,
-#filtro-musculacion:checked ~ .galeria-clases > .card.musculacion,
-#filtro-funcional:checked ~ .galeria-clases > .card.funcional {
-  display: flex; /* Or 'block'/'grid' */
-}
-
-@keyframes fadeInCard {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.filtro-descripcion p {
+  /* display es controlado por JS */
+  font-style: italic;
+  color: var(--grey-color);
+  font-size: 0.9rem;
 }
 
 /* ==========================================================================
-     Gallery Grid (Masonry-like) & Card Effects
-     ========================================================================== */
+         Lógica de Filtrado CSS (ELIMINADA)
+         ========================================================================== */
+
+/* Las reglas que usaban #filtro-todos:checked ~, #filtro-yoga:checked ~, etc.
+     han sido eliminadas porque el filtrado ahora se maneja con JavaScript. */
+
+/* ==========================================================================
+         Estilos Scroll Reveal (NUEVO/CONFIRMADO)
+         ========================================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* Las tarjetas usarán el display definido por .cards-container (grid) */
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+         Clase para Ocultar Elementos Filtrados por JS (NUEVO/CONFIRMADO)
+         ========================================================================== */
+.card.hidden-by-filter {
+  /* Esta clase la añade/quita el JS */
+  display: none !important; /* Oculta la tarjeta. !important si hay conflictos */
+  /* Opcional: Animación de salida */
+  animation: fadeOutCard 0.4s ease forwards;
+}
+
+@keyframes fadeOutCard {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Opcional: Animación de entrada para cuando se muestra de nuevo */
+/* (Asegúrate que no interfiera con scroll-reveal) */
+/* .card:not(.hidden-by-filter) {
+      animation: fadeInCardJS 0.5s ease forwards;
+  }
+  
+  @keyframes fadeInCardJS {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+  } */
+
+/* ==========================================================================
+         Gallery Grid & Card Effects (Sin cambios en la lógica principal)
+         ========================================================================== */
 
 .galeria-clases {
-  /* Uses .cards-container styles from style.css for the grid */
-  /* display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: ...; */
-  align-items: start; /* Align items to the top for a more masonry feel */
+  /* Hereda display: grid de .cards-container en style.css */
+  align-items: start; /* Alinea items arriba para efecto masonry */
   margin-bottom: calc(var(--spacing-unit) * 3);
 }
 
-/* Card Zoom/Overlay Effect */
+/* Estilos base de la tarjeta (heredados de .card en style.css) */
+/* .galeria-clases .card { ... } */
+
+/* Efecto Hover Zoom/Overlay (sin cambios) */
 .galeria-clases .card .card-image {
-  position: relative; /* Needed for overlay positioning */
-  overflow: hidden; /* Keep zoom effect contained */
+  position: relative;
+  overflow: hidden;
 }
-
 .galeria-clases .card .card-image img {
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth zoom */
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 .galeria-clases .card .card-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  background-color: rgba(0, 0, 0, 0.7);
   color: var(--white-color);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.4s ease;
-  pointer-events: none; /* Allow clicks on card content below */
+  pointer-events: none;
   font-weight: 600;
   font-size: 1.1rem;
 }
-
 .galeria-clases .card:hover .card-image img {
-  transform: scale(1.1); /* Zoom effect */
+  transform: scale(1.1);
 }
-
 .galeria-clases .card:hover .card-overlay {
-  opacity: 1; /* Show overlay */
+  opacity: 1;
 }
 
 /* ==========================================================================
-     Responsive Schedule Table
-     ========================================================================== */
-
+         Responsive Schedule Table (Sin cambios)
+         ========================================================================== */
+/* ... (Estilos de la tabla sin cambios) ... */
 .horarios-semanales {
   margin-top: calc(var(--spacing-unit) * 3);
 }
-
 .horarios-semanales h2 {
   text-align: center;
   margin-bottom: calc(var(--spacing-unit) * 1.5);
   font-size: 1.8rem;
 }
-
 .tabla-responsive-container {
-  overflow-x: auto; /* Enable horizontal scroll on small screens if needed */
+  overflow-x: auto;
   margin: 0 auto;
   max-width: 100%;
 }
-
 .horarios-semanales table {
   width: 100%;
   border-collapse: collapse;
@@ -166,9 +196,8 @@
   background-color: var(--white-color);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  overflow: hidden; /* Clip shadow */
+  overflow: hidden;
 }
-
 .horarios-semanales th,
 .horarios-semanales td {
   padding: calc(var(--spacing-unit) * 0.8);
@@ -176,7 +205,6 @@
   border: 1px solid var(--border-color);
   font-size: 0.95rem;
 }
-
 .horarios-semanales thead th {
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -185,35 +213,28 @@
   font-size: 0.9rem;
   letter-spacing: 0.5px;
 }
-
 .horarios-semanales tbody tr:nth-child(even) {
   background-color: var(--light-color);
 }
-
 .horarios-semanales tbody tr:hover {
-  background-color: #ddd; /* Hover effect for rows */
+  background-color: #ddd;
 }
-
-.horarios-semanales td[data-label="Hora"] {
+.horarios-semanales td[data-label='Hora'] {
   font-weight: 600;
   background-color: var(--secondary-color);
   color: var(--white-color);
 }
-
-/* Responsive Table Styles (Mobile) */
 @media (max-width: 767.98px) {
   .horarios-semanales thead {
-    display: none; /* Hide table headers */
+    display: none;
   }
-
   .horarios-semanales table,
   .horarios-semanales tbody,
   .horarios-semanales tr,
   .horarios-semanales td {
-    display: block; /* Make table elements stack vertically */
-    width: 100% !important; /* Force full width */
+    display: block;
+    width: 100% !important;
   }
-
   .horarios-semanales tr {
     margin-bottom: var(--spacing-unit);
     border: 1px solid var(--border-color);
@@ -221,114 +242,141 @@
     overflow: hidden;
     box-shadow: var(--box-shadow);
   }
-
   .horarios-semanales td {
-    text-align: right; /* Align cell content to the right */
-    padding-left: 50%; /* Make space for the label */
+    text-align: right;
+    padding-left: 50%;
     position: relative;
-    border: none; /* Remove individual cell borders */
-    border-bottom: 1px dashed var(--border-color); /* Add separator */
+    border: none;
+    border-bottom: 1px dashed var(--border-color);
   }
-
   .horarios-semanales td:last-child {
-    border-bottom: none; /* Remove separator for last cell in a block */
+    border-bottom: none;
   }
-
-  /* Add the header label using ::before */
   .horarios-semanales td::before {
-    content: attr(data-label); /* Get content from data-label attribute */
+    content: attr(data-label);
     position: absolute;
     left: 10px;
-    width: calc(50% - 20px); /* Adjust width */
+    width: calc(50% - 20px);
     padding-right: 10px;
     text-align: left;
     font-weight: 600;
-    color: var(--primary-color); /* Highlight the label */
+    color: var(--primary-color);
   }
-
-  .horarios-semanales td[data-label="Hora"] {
-    background-color: var(--primary-color); /* Make time stand out */
+  .horarios-semanales td[data-label='Hora'] {
+    background-color: var(--primary-color);
     color: var(--white-color);
     font-size: 1.1rem;
     text-align: center;
-    padding-left: 0; /* Reset padding */
+    padding-left: 0;
   }
-  .horarios-semanales td[data-label="Hora"]::before {
-    display: none; /* Hide label for time cell */
+  .horarios-semanales td[data-label='Hora']::before {
+    display: none;
   }
 }
 
 /* ==========================================================================
-     Dark Mode Specific Overrides for Clases Page
-     ========================================================================== */
+         Dark Mode Specific Overrides (Ajustado para selectores JS)
+         ========================================================================== */
 
-[data-theme="dark"] .filtros-clases {
+[data-theme='dark'] .filtros-clases {
   border-bottom-color: #444;
 }
-
-[data-theme="dark"] .filtros-clases label {
+[data-theme='dark'] .filtros-clases .filter-label {
+  /* Selector correcto para JS */
   background-color: #3a3a3a;
   color: var(--grey-color);
   border-color: #555;
 }
-
-[data-theme="dark"] .filtros-clases input[type="radio"]:checked + label {
+[data-theme='dark'] .filtros-clases .filter-label.active {
+  /* Selector correcto para JS */
   background-color: var(--primary-color);
   color: var(--white-color);
   border-color: var(--primary-color);
 }
-
-[data-theme="dark"] .filtros-clases label:hover {
+[data-theme='dark'] .filtros-clases .filter-label:hover {
+  /* Selector correcto para JS */
   background-color: #555;
   color: var(--white-color);
 }
-
-[data-theme="dark"] .filtros-clases input[type="radio"]:checked + label:hover {
-  background-color: #c0392b; /* Darker primary */
+[data-theme='dark'] .filtros-clases .filter-label.active:hover {
+  /* Selector correcto para JS */
+  background-color: #c0392b;
+}
+[data-theme='dark'] .filtro-descripcion p {
+  color: var(--grey-color);
 }
 
-[data-theme="dark"] .galeria-clases .card .card-overlay {
-  background-color: rgba(0, 0, 0, 0.8); /* Slightly darker overlay */
+/* ... (Resto de estilos dark mode para galería, tabla, etc. sin cambios) ... */
+[data-theme='dark'] .galeria-clases .card .card-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
 }
-
-[data-theme="dark"] .horarios-semanales table {
-  background-color: var(--card-bg-color); /* Dark background for table */
+[data-theme='dark'] .horarios-semanales table {
+  background-color: var(--card-bg-color);
   border-color: #444;
 }
-
-[data-theme="dark"] .horarios-semanales th,
-[data-theme="dark"] .horarios-semanales td {
+[data-theme='dark'] .horarios-semanales th,
+[data-theme='dark'] .horarios-semanales td {
   border-color: #444;
 }
-
-[data-theme="dark"] .horarios-semanales thead th {
-  background-color: var(--primary-color); /* Keep header color */
+[data-theme='dark'] .horarios-semanales thead th {
+  background-color: var(--primary-color);
 }
-
-[data-theme="dark"] .horarios-semanales tbody tr:nth-child(even) {
-  background-color: #2c2c2c; /* Slightly different dark for even rows */
+[data-theme='dark'] .horarios-semanales tbody tr:nth-child(even) {
+  background-color: #2c2c2c;
 }
-
-[data-theme="dark"] .horarios-semanales tbody tr:hover {
-  background-color: #4a4a4a; /* Darker hover */
+[data-theme='dark'] .horarios-semanales tbody tr:hover {
+  background-color: #4a4a4a;
 }
-
-[data-theme="dark"] .horarios-semanales td[data-label="Hora"] {
-  background-color: var(--secondary-color); /* Keep secondary color */
+[data-theme='dark'] .horarios-semanales td[data-label='Hora'] {
+  background-color: var(--secondary-color);
 }
-
-/* Responsive dark mode table */
 @media (max-width: 767.98px) {
-  [data-theme="dark"] .horarios-semanales tr {
+  [data-theme='dark'] .horarios-semanales tr {
     border-color: #444;
   }
-  [data-theme="dark"] .horarios-semanales td {
+  [data-theme='dark'] .horarios-semanales td {
     border-bottom-color: #444;
   }
-  [data-theme="dark"] .horarios-semanales td::before {
-    color: var(--primary-color); /* Keep label color */
+  [data-theme='dark'] .horarios-semanales td::before {
+    color: var(--primary-color);
   }
-  [data-theme="dark"] .horarios-semanales td[data-label="Hora"] {
-    background-color: var(--primary-color); /* Keep time color */
+  [data-theme='dark'] .horarios-semanales td[data-label='Hora'] {
+    background-color: var(--primary-color);
   }
+}
+/* Estilos básicos para Scroll Reveal (puedes moverlos a clases.css) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilo básico para imágenes lazy-loading (opcional, mejora visual) */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+/* Placeholder mientras carga (opcional) */
+/* ASEGÚRATE DE TENER 'placeholder-low.jpg' EN LA CARPETA 'imagenes' */
+.card-image img:not(.loaded) {
+  background-color: #eee;
+  /* Un color de fondo suave */
+  min-height: 150px;
+  /* Altura mínima para el placeholder */
+}
+
+/* Estilo para ocultar elementos filtrados por JS */
+.card.hidden-by-filter {
+  display: none !important;
+  /* Oculta la tarjeta */
 }
